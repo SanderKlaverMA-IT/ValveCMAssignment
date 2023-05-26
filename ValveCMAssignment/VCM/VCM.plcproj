@@ -1,0 +1,47 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <FileVersion>1.0.0.0</FileVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0727cba7-ebfc-4006-a00e-6414c5e9c816}</ProjectGuid>
+    <SubObjectsSortedByName>True</SubObjectsSortedByName>
+    <DownloadApplicationInfo>true</DownloadApplicationInfo>
+    <WriteProductVersion>true</WriteProductVersion>
+    <GenerateTpy>false</GenerateTpy>
+    <Name>VCM</Name>
+    <ProgramVersion>3.1.4024.0</ProgramVersion>
+    <Application>{8105e7ce-51b9-4a7d-aa31-df64a280f2e0}</Application>
+    <TypeSystem>{fa85c2bb-930b-411d-b998-d7932bf9636e}</TypeSystem>
+    <Implicit_Task_Info>{4f36ff9f-0b69-455e-90de-d28080c9aaf7}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{f0b86d0c-7998-4c25-a7bd-50ac11b82a18}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{39295219-db80-4df0-8456-16ccd9f17426}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{f3222f94-8aba-4608-be05-ab7a5fbb75a2}</LibraryReferences>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\MAIN.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DUTs" />
+    <Folder Include="GVLs" />
+    <Folder Include="VISUs" />
+    <Folder Include="POUs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderReference Include="Tc2_Standard">
+      <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Standard</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_System">
+      <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_System</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_Module">
+      <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_Module</Namespace>
+    </PlaceholderReference>
+  </ItemGroup>
+</Project>
