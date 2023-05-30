@@ -7,9 +7,9 @@ STRUCT
 	ManualMode: BOOL;
 	AutoMode: BOOL := TRUE;
 	InSimulation: BOOL;
-	Closed: BOOL;
+	Closed: BOOL := TRUE;
 	Opening: BOOL;
-	Open: BOOL;
+	Open: BOOL:= TRUE;
 	Closing: BOOL;
 	Interlock: BOOL;
 	Alarm: BOOL;

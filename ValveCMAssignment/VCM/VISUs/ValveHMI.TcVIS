@@ -387,7 +387,7 @@
                             </o>
                             <o>
                               <v n="Id">4062784938L</v>
-                              <v n="Value">"Element-Switch-PushSwitch-Red"</v>
+                              <v n="Value">"Element-Switch-PushSwitch-Blue"</v>
                             </o>
                             <o>
                               <v n="Id">493260384L</v>
@@ -610,7 +610,7 @@
                             </o>
                             <o>
                               <v n="Id">4062784938L</v>
-                              <v n="Value">"Element-Lamp-Lamp1-Yellow"</v>
+                              <v n="Value">"Element-Lamp-Lamp1-Blue"</v>
                             </o>
                             <o>
                               <v n="Id">493260384L</v>
@@ -1041,7 +1041,7 @@
                             </o>
                             <o>
                               <v n="Id">4062784938L</v>
-                              <v n="Value">"Element-Lamp-Lamp1-Yellow"</v>
+                              <v n="Value">"Element-Lamp-Lamp1-Red"</v>
                             </o>
                             <o>
                               <v n="Id">493260384L</v>
@@ -4025,7 +4025,7 @@
                     </o>
                     <o>
                       <v n="Id">390574330L</v>
-                      <v n="Value">"Valve 01"</v>
+                      <v n="Value">"Valve ## (FDS assignment)"</v>
                     </o>
                     <o>
                       <v n="Id">3729828405L</v>
@@ -4072,7 +4072,7 @@
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
-                      <v n="Value">"577"</v>
+                      <v n="Value">"350"</v>
                     </o>
                   </l>
                 </o>
@@ -4372,7 +4372,7 @@
             </o>
             <v n="DialogDut">{74e1de05-63cd-41e7-97a3-7fa9de09a8f2}</v>
           </o>
-          <v n="LastUsedIdForIdentifier">52</v>
+          <v n="LastUsedIdForIdentifier">53</v>
           <o n="TextDocument" t="TextDocument">
             <a n="TextLines" cet="TextLine">
               <o>

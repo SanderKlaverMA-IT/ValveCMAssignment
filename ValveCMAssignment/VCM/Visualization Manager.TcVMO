@@ -54,7 +54,7 @@
               <v>FB_Reinit</v>
               <v>e6cdb8ec-b041-4267-93da-eb11b616df9d</v>
             </d>
-            <v n="FbName">"NotImportant"</v>
+            <v n="FbName">"__VisuInitInstantiation_Fb"</v>
             <v n="FbGuid">{1fa9f8c9-9e24-4eb1-aed9-6bbb1d18eb11}</v>
           </o>
           <o n="TargetProperties" t="VisualizationTargetProperties">
@@ -582,9 +582,9 @@
               <v n="UpdateRate">200</v>
               <v n="CommBufferSize">50000</v>
               <v n="BestFit">true</v>
-              <v n="ClientSizeMode" t="VisualClientSizeMode">AutoDetect</v>
-              <v n="ClientSizeX">2000</v>
-              <v n="ClientSizeY">2000</v>
+              <v n="ClientSizeMode" t="VisualClientSizeMode">Specified</v>
+              <v n="ClientSizeX">650</v>
+              <v n="ClientSizeY">500</v>
               <v n="Antialiasing">true</v>
               <v n="ClientOperationType" t="eDefaultInputSetting">Touchscreen</v>
               <v n="ScaleTypeIsotropic">true</v>
