@@ -1,13 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1">
-  <POU Name="MAIN" Id="{617330db-b8e1-492e-94bc-52a923c83901}">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{617330db-b8e1-492e-94bc-52a923c83901}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	// input temp for debugging 
+	I_IsOpen :BOOL := FALSE;
+	I_IsClosed :BOOL := FALSE;
+	I_HasFailure :BOOL := FALSE; 
+	// output temp for debugging
+	O_SetOpen : BOOL := FALSE;
+
+ 	//hmi01 : REFERENCE val;
+	valve_01 : FB_Valve_monostable;
+	// io comu
+	// datablock met DUT's
+	
 END_VAR
-]]>
-    </Declaration>
+]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[// FC_Test();
+
+// Set IN(IT)
+I_IsOpen := FALSE;
+I_IsClosed := TRUE;
+I_HasFailure := FALSE;
+valve_01.MaxOpenCloseDuration := 180;
+
+
+
+
+
+// Do stuff
+
+
+
+
+// Set Outputs
+O_SetOpen := FALSE;
+
+]]></ST>
     </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="18" Count="1" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="46" Count="3" />
+      <LineId Id="42" Count="2" />
+      <LineId Id="37" Count="1" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="32" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>

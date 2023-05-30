@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <Task Name="PlcTask" Id="{83ed8822-e1f5-4862-b1cc-52b3ba9df377}">
     <!--CycleTime in micro seconds.-->
     <CycleTime>10000</CycleTime>
@@ -12,6 +12,5 @@
     <Fb_exit>{ffcbda54-972c-4973-92c8-37cf8bdb5974}</Fb_exit>
     <CycleUpdate>{8fdecdd9-7cc0-4e51-8d45-33a781c12370}</CycleUpdate>
     <PostCycleUpdate>{cbae26ec-06c6-4b83-a4b1-94dc4a57a932}</PostCycleUpdate>
-    <ObjectProperties />
   </Task>
 </TcPlcObject>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Valve_monostable" Id="{960a4f6f-ad56-4762-b13b-5efd91056808}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Valve_monostable
+VAR_INPUT
+	MaxOpenCloseDuration: INT; //(s) Maximum time the valve needs to open or close in seconds
+END_VAR
+VAR_OUTPUT
+	
+END_VAR
+VAR_IN_OUT
+	valve_data: DUT_VALVE;
+END_VAR
+VAR
+	opening_closing_timer: Tc2_Standard.TON;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+opening_closing_timer.PT := INT_TO_TIME(MaxOpenCloseDuration * 1000);
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Valve_monostable">
+      <LineId Id="18" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="30" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
