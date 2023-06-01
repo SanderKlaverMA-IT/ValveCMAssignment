@@ -582,7 +582,7 @@
               <v n="UpdateRate">200</v>
               <v n="CommBufferSize">50000</v>
               <v n="BestFit">true</v>
-              <v n="ClientSizeMode" t="VisualClientSizeMode">Specified</v>
+              <v n="ClientSizeMode" t="VisualClientSizeMode">AutoDetect</v>
               <v n="ClientSizeX">650</v>
               <v n="ClientSizeY">500</v>
               <v n="Antialiasing">true</v>

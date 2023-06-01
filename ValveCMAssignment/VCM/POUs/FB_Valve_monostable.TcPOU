@@ -6,24 +6,199 @@ VAR_INPUT
 	MaxOpenCloseDuration: INT; //(s) Maximum time the valve needs to open or close in seconds
 END_VAR
 VAR_OUTPUT
-	
+	setOpen: BOOL;
 END_VAR
 VAR_IN_OUT
 	valve_data: DUT_VALVE;
 END_VAR
 VAR
 	opening_closing_timer: Tc2_Standard.TON;
+	manualOpen: BOOL;
+	manualClose: BOOL;
+	manualReset: BOOL;
+	reqOpen: BOOL;
+	reqClose: BOOL;
+	isOpen: BOOL;
+	isClosed: BOOL;
+	STS: INT;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-opening_closing_timer.PT := INT_TO_TIME(MaxOpenCloseDuration * 1000);
+      <ST><![CDATA[{region Input} //set INTERNAL variables
+
+// hmi-open command
+IF valve_data.hmi.Open THEN
+	manualOpen := TRUE;
+	valve_data.hmi.Open := FALSE;
+END_IF
+	 
+// hmi-close command
+IF valve_data.hmi.Close THEN
+	manualClose := TRUE;
+	 valve_data.hmi.Close := FALSE;
+END_IF
+	
+// manual_reset command
+IF valve_data.hmi.Reset THEN
+	manualReset := TRUE;
+	valve_data.hmi.Reset := FALSE;
+END_IF 			
+		  
+{endregion}
+	 
+{region interlock manual auto}
+valve_data.sts.InSimulation := valve_data.cs.Simulation OR valve_data.cs.Simulation; 
+valve_data.sts.Interlock := valve_data.cs.Interlock OR valve_data.cs.Interlock;
+valve_data.sts.ManualMode := NOT valve_data.sts.Interlock AND (valve_data.cs.Manual OR valve_data.hmi.ManualOn);
+valve_data.sts.AutoMode := NOT (valve_data.sts.Interlock OR valve_data.sts.ManualMode) AND (valve_data.cs.Manual OR (valve_data.hmi.ManualOn AND NOT valve_data.hmi.ManualOff));
+{endregion}
+
+{region control coördination}
+
+IF manualReset THEN
+    valve_data.alm.GeneralFailure := FALSE;
+    valve_data.alm.TimeFailure := FALSE;
+END_IF
+     
+IF GVL_VCM.io_values.I_hasFailure THEN
+    valve_data.alm.GeneralFailure := TRUE;
+    RETURN;		 
+END_IF
+               
+reqOpen := (valve_data.sts.AutoMode AND valve_data.cs.Open) OR (valve_data.sts.ManualMode AND manualOpen);
+reqClose := valve_data.sts.Interlock OR (valve_data.sts.AutoMode AND valve_data.cs.Close) OR (valve_data.sts.ManualMode AND manualClose);
+isOpen := GVL_VCM.io_values.I_isOpen OR (valve_data.sts.InSimulation AND reqOpen);
+isClosed := GVL_VCM.io_values.I_isClosed OR (valve_data.sts.InSimulation AND reqClose);
+
+// set state
+IF isClosed THEN
+    valve_data.sts.State := 10;
+ELSIF reqOpen THEN
+    valve_data.sts.State := 20;
+ELSIF isOpen THEN
+    valve_data.sts.State := 30;
+ELSIF reqClose THEN
+    valve_data.sts.State := 40;
+END_IF
+
+CASE valve_data.sts.State OF
+    10: //isClosed 
+        valve_data.sts.Closed := TRUE;
+    20: //opening
+        valve_data.sts.Opening := TRUE;
+    30: // isOpen
+        valve_data.sts.Open := TRUE;
+    40: // closing
+        valve_data.sts.Closing := TRUE;
+END_CASE
+
+{endregion}
+
+{region set timer guard for opening and closing}
+
+opening_closing_timer(IN := valve_data.sts.Opening OR valve_data.sts.Closing, PT:= INT_TO_TIME(MaxOpenCloseDuration * 1000));
+valve_data.alm.TimeFailure := opening_closing_timer.Q;
+{endregion}
+
+{region reset transient state values}
+// TODO, denk na over hoe de transient state weer te resetten???
+// is de transient state wel nodig?
+manualOpen := FALSE;
+manualClose := FALSE;
+manualReset := FALSE;
+{endregion}
+ 
+{region BasicControls}
+ 
+valve_data.alm.GeneralFailure := valve_data.alm.GeneralFailure OR valve_data.alm.TimeFailure;
+GVL_VCM.io_values.O_setOpen := NOT valve_data.sts.InSimulation AND reqOpen;
+GVL_VCM.io_values.O_setOpen := valve_data.hmi.Simulation;
+ 
+{endregion}
+
+{region outputs}
+
+
+//TODO remove after debugging
+//begin used for debugging to read the values ond end of the cyclus: 
+    valve_data := valve_data;
+// used for debugging
+{endregion}
 ]]></ST>
     </Implementation>
     <LineIds Name="FB_Valve_monostable">
-      <LineId Id="18" Count="0" />
-      <LineId Id="9" Count="0" />
-      <LineId Id="30" Count="0" />
+      <LineId Id="339" Count="2" />
+      <LineId Id="464" Count="0" />
+      <LineId Id="343" Count="0" />
+      <LineId Id="468" Count="0" />
+      <LineId Id="344" Count="4" />
+      <LineId Id="509" Count="0" />
+      <LineId Id="349" Count="4" />
+      <LineId Id="510" Count="0" />
+      <LineId Id="354" Count="0" />
+      <LineId Id="588" Count="0" />
+      <LineId Id="465" Count="1" />
+      <LineId Id="576" Count="0" />
+      <LineId Id="629" Count="0" />
+      <LineId Id="580" Count="0" />
+      <LineId Id="590" Count="1" />
+      <LineId Id="582" Count="0" />
+      <LineId Id="584" Count="0" />
+      <LineId Id="541" Count="0" />
+      <LineId Id="627" Count="0" />
+      <LineId Id="626" Count="0" />
+      <LineId Id="547" Count="0" />
+      <LineId Id="549" Count="1" />
+      <LineId Id="546" Count="0" />
+      <LineId Id="544" Count="0" />
+      <LineId Id="525" Count="0" />
+      <LineId Id="527" Count="0" />
+      <LineId Id="526" Count="0" />
+      <LineId Id="540" Count="0" />
+      <LineId Id="524" Count="0" />
+      <LineId Id="384" Count="0" />
+      <LineId Id="463" Count="0" />
+      <LineId Id="383" Count="0" />
+      <LineId Id="632" Count="2" />
+      <LineId Id="636" Count="1" />
+      <LineId Id="652" Count="2" />
+      <LineId Id="656" Count="0" />
+      <LineId Id="655" Count="0" />
+      <LineId Id="635" Count="0" />
+      <LineId Id="640" Count="0" />
+      <LineId Id="638" Count="0" />
+      <LineId Id="642" Count="0" />
+      <LineId Id="644" Count="0" />
+      <LineId Id="643" Count="0" />
+      <LineId Id="646" Count="0" />
+      <LineId Id="648" Count="0" />
+      <LineId Id="650" Count="0" />
+      <LineId Id="649" Count="0" />
+      <LineId Id="647" Count="0" />
+      <LineId Id="641" Count="0" />
+      <LineId Id="631" Count="0" />
+      <LineId Id="380" Count="0" />
+      <LineId Id="661" Count="1" />
+      <LineId Id="664" Count="0" />
+      <LineId Id="668" Count="0" />
+      <LineId Id="665" Count="0" />
+      <LineId Id="663" Count="0" />
+      <LineId Id="358" Count="2" />
+      <LineId Id="651" Count="0" />
+      <LineId Id="361" Count="2" />
+      <LineId Id="365" Count="0" />
+      <LineId Id="514" Count="0" />
+      <LineId Id="531" Count="0" />
+      <LineId Id="533" Count="0" />
+      <LineId Id="535" Count="0" />
+      <LineId Id="519" Count="0" />
+      <LineId Id="530" Count="0" />
+      <LineId Id="518" Count="0" />
+      <LineId Id="517" Count="0" />
+      <LineId Id="366" Count="3" />
+      <LineId Id="513" Count="0" />
+      <LineId Id="370" Count="3" />
+      <LineId Id="36" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

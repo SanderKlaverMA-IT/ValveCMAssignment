@@ -56,6 +56,26 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"46"</v>
+              <v n="TextDefault">"I_hasFailure"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"904"</v>
+              <v n="TextDefault">"I_isClosed"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"233"</v>
+              <v n="TextDefault">"I_isOpen"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"182"</v>
+              <v n="TextDefault">"I_setOpen"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"626"</v>
               <v n="TextDefault">"Manual"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -66,8 +86,18 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"36"</v>
+              <v n="TextDefault">"Only for Demo and testing"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"352"</v>
               <v n="TextDefault">"Open Valve"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"610"</v>
+              <v n="TextDefault">"O_setOpen"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -78,6 +108,16 @@
             <o>
               <v n="TextID">"444"</v>
               <v n="TextDefault">"Simulation"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"109"</v>
+              <v n="TextDefault">"Temporary for Demo and testing"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"946"</v>
+              <v n="TextDefault">"Temporary Only for Demo and testing"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
