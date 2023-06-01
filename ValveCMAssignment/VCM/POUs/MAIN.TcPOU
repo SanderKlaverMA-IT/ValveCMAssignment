@@ -10,13 +10,13 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Set IN(IT)
-valve_01.MaxOpenCloseDuration := 180;
+valve_01.MaxOpenCloseDuration := 5;// temp 5 for test should be 180 
 //GVL_VCM.io_values.I_isOpen := FALSE;
 //GVL_VCM.io_values.I_isClosed := TRUE;
 //GVL_VCM.io_values.I_hasFailure := FALSE;
 
 // Do stuff
-valve_01(valve_data:= GVL_VCM.valve01);
+valve_01(Valve:= GVL_VCM.valve01);
 
 
 

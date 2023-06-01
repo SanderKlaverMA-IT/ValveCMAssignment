@@ -5,6 +5,7 @@
 STRUCT
 	Auto :BOOL;
 	Manual :BOOL;
+    Interlock :BOOL;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

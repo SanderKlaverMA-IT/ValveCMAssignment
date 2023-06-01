@@ -3,10 +3,10 @@
   <DUT Name="DUT_VALVE" Id="{7768549f-516b-48d9-ba55-440da92000e0}">
     <Declaration><![CDATA[TYPE DUT_VALVE :
 STRUCT
-	cs: DUT_CS;
-	hmi: DUT_HMI;
-	sts: DUT_STS;
-	alm: DUT_ALM;
+	Cs: DUT_CS;
+	Hmi: DUT_HMI;
+	Sts: DUT_STS;
+	Alm: DUT_ALM;
 END_STRUCT
 END_TYPE
 ]]></Declaration>
