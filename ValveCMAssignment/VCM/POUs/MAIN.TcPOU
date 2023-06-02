@@ -3,7 +3,7 @@
   <POU Name="MAIN" Id="{617330db-b8e1-492e-94bc-52a923c83901}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	
+	isFirstStart : BOOL := TRUE;
 	valve_01 : FB_Valve_monostable;
 	
 END_VAR
@@ -11,28 +11,47 @@ END_VAR
     <Implementation>
       <ST><![CDATA[// Set IN(IT)
 valve_01.MaxOpenCloseDuration := 5;// temp 5 for test should be 180 
-//GVL_VCM.io_values.I_isOpen := FALSE;
-//GVL_VCM.io_values.I_isClosed := TRUE;
+
+IF isFirstStart THEN
+	//GVL_VCM.io_values.I_isOpen := FALSE;
+GVL_VCM.io_values.I_isClosed := TRUE;
 //GVL_VCM.io_values.I_hasFailure := FALSE;
+END_IF
 
 // Do stuff
-valve_01(Valve:= GVL_VCM.valve01);
+valve_01(Valve:= GVL_VCM.valve01, I_O:= GVL_VCM.io_values);
 
+isFirstStart := FALSE;
 
+// for debugging
+GVL_VCM.io_values.I_isOpen;
+GVL_VCM.io_values.I_isClosed;
+GVL_VCM.io_values.I_hasFailure;
+GVL_VCM.io_values.O_setOpen;
 
-]]></ST>
+GVL_VCM.valve01.Alm.InAlarm;
+GVL_VCM.valve01.Alm.GeneralFailure;
+GVL_VCM.valve01.Alm.TimeFailure;]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="7" Count="0" />
       <LineId Id="60" Count="0" />
-      <LineId Id="6" Count="0" />
-      <LineId Id="18" Count="1" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="79" Count="1" />
+      <LineId Id="77" Count="1" />
       <LineId Id="42" Count="1" />
       <LineId Id="37" Count="0" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="69" Count="1" />
       <LineId Id="45" Count="0" />
       <LineId Id="20" Count="0" />
+      <LineId Id="68" Count="0" />
       <LineId Id="33" Count="0" />
       <LineId Id="32" Count="0" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="72" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

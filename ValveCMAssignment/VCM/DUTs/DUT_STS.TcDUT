@@ -13,7 +13,8 @@ STRUCT
 	Closing: BOOL;
 	Interlock: BOOL;
 	Alarm: BOOL;
-END_STRUCT
+END_STRUCT	
+	
 END_TYPE
 ]]></Declaration>
   </DUT>

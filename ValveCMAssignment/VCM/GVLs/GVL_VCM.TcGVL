@@ -4,7 +4,15 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	valve01: DUT_VALVE;
-	io_values: DUT_IO;	
+	io_values: DUT_IO;
+END_VAR
+
+VAR_GLOBAL CONSTANT
+	STS_UNDEFINED : INT := 0;
+	STS_CLOSED : INT := 10;
+	STS_OPENING : INT := 20;
+	STS_OPEN : INT := 30;
+	STS_CLOSING : INT := 40;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

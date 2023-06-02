@@ -7,6 +7,10 @@ STRUCT
 	Close :BOOL;
 	Reset :BOOL;
 	Simulation :BOOL;
+	AutoOn :BOOL;
+	AutoOff :BOOL;
+	ManualOn :BOOL;
+	ManualOff :BOOL;
 END_STRUCT
 END_TYPE
 ]]></Declaration>
