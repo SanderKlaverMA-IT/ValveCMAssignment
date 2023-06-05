@@ -236,6 +236,21 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"899"</v>
+              <v n="TextDefault">"SIM I_IO.hasFailure"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"293"</v>
+              <v n="TextDefault">"Sim I_IO.isClosed"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"885"</v>
+              <v n="TextDefault">"SIM I_IO&gt;hasFailure"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"684"</v>
               <v n="TextDefault">"Sim I_isClosed"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -243,6 +258,11 @@
             <o>
               <v n="TextID">"444"</v>
               <v n="TextDefault">"Simulation"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"822"</v>
+              <v n="TextDefault">"Sim_IO.isOpen"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

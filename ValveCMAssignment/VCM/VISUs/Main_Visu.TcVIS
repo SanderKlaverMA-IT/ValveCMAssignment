@@ -5,7 +5,7 @@
       <Data>
         <o xml:space="preserve" t="VisualObject">
           <n n="LastVisuLanguageModelEntry" />
-          <v n="UniqueIdGenerator">"3"</v>
+          <v n="UniqueIdGenerator">"5"</v>
           <o n="VisualElemList" t="VisualElemList">
             <l n="VisualElementList" t="VisualElemCollection" cet="GenericVisualElem">
               <o>
@@ -90,11 +90,11 @@
                     </o>
                     <o>
                       <v n="Id">1649127785L</v>
-                      <v n="Value">1</v>
+                      <v n="Value">21</v>
                     </o>
                     <o>
                       <v n="Id">357335551L</v>
-                      <v n="Value">3</v>
+                      <v n="Value">24</v>
                     </o>
                     <o>
                       <v n="Id">2422045748L</v>
@@ -102,7 +102,7 @@
                     </o>
                     <o>
                       <v n="Id">2134141914L</v>
-                      <v n="Value">487</v>
+                      <v n="Value">492</v>
                     </o>
                     <o>
                       <v n="Id">394923068L</v>
@@ -114,7 +114,7 @@
                     </o>
                     <o>
                       <v n="Id">3549563837L</v>
-                      <v n="Value">"ANISOTROPIC"</v>
+                      <v n="Value">"SCROLLABLE"</v>
                     </o>
                     <o>
                       <v n="Id">363316305L</v>
@@ -371,11 +371,11 @@
                     </o>
                     <o>
                       <v n="Id">550940142L</v>
-                      <v n="Value">76</v>
+                      <v n="Value">96</v>
                     </o>
                     <o>
                       <v n="Id">1473355128L</v>
-                      <v n="Value">18</v>
+                      <v n="Value">39</v>
                     </o>
                     <o>
                       <v n="Id">493260384L</v>
@@ -425,6 +425,35 @@
                             <n n="DescriptionTextID" />
                             <v n="DescriptionUseParent">false</v>
                           </o>
+                          <o>
+                            <v n="Flags">2L</v>
+                            <v n="BasicTypeNodeValue">"GVL_VCM.ioValve01"</v>
+                            <v n="BasicTypeNodeAcceptsExpression">true</v>
+                            <n n="BasicTypeNodeFastAccess" />
+                            <a n="BasicTypeNodeEnumValues" et="String" />
+                            <n n="EnumValueDisplayTextIds" />
+                            <n n="EnumValueVisibilityAttributeValues" />
+                            <n n="EnumValueLibraryId" />
+                            <n n="DynamicEnumMemberVisibilityCheckerTypeGuid" />
+                            <l n="TypeNodeChildren" t="ArrayList" />
+                            <o n="TypeNodeType" t="TypeNodeType">
+                              <v n="TypeClass" t="TypeClass">Reference</v>
+                              <v n="QualifiedName">"DUT_IO"</v>
+                              <v n="Name">"DUT_IO"</v>
+                            </o>
+                            <v n="TypeNodeName">"ValveIO"</v>
+                            <o n="TypeNodeAttributes" t="TypeNodeAttributes2">
+                              <v n="AttrFlags">0UL</v>
+                              <d n="TypeNodeAttributesData" t="CaseInsensitiveHashtable" />
+                              <v n="ConvDone">true</v>
+                            </o>
+                            <v n="TypeNodeId" t="Int16">256</v>
+                            <v n="TypeNodeIdLong">1828834575L</v>
+                            <n n="LibraryId" />
+                            <n n="DisplayTextId" />
+                            <n n="DescriptionTextID" />
+                            <v n="DescriptionUseParent">false</v>
+                          </o>
                         </l>
                         <o n="TypeNodeType" t="TypeNodeType">
                           <v n="TypeClass" t="TypeClass">Userdef</v>
@@ -445,7 +474,7 @@
                           <v n="ConvDone">true</v>
                         </o>
                         <v n="TypeNodeId" t="Int16">1</v>
-                        <v n="TypeNodeIdLong">2473092364L</v>
+                        <v n="TypeNodeIdLong">1429472249L</v>
                         <n n="LibraryId" />
                         <n n="DisplayTextId" />
                         <n n="DescriptionTextID" />
@@ -454,11 +483,23 @@
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">1165035537L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">1013868361L</v>
                       <v n="Value">true</v>
                     </o>
                     <o>
                       <v n="Id">2584409864L</v>
                       <v n="Value">"GVL_VCM.valve01"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1828834575L</v>
+                      <v n="Value">"GVL_VCM.ioValve01"</v>
                     </o>
                   </l>
                 </o>
@@ -564,11 +605,11 @@
                     </o>
                     <o>
                       <v n="Id">1649127785L</v>
-                      <v n="Value">656</v>
+                      <v n="Value">686</v>
                     </o>
                     <o>
                       <v n="Id">357335551L</v>
-                      <v n="Value">3</v>
+                      <v n="Value">22</v>
                     </o>
                     <o>
                       <v n="Id">2422045748L</v>
@@ -588,7 +629,7 @@
                     </o>
                     <o>
                       <v n="Id">3549563837L</v>
-                      <v n="Value">"ANISOTROPIC"</v>
+                      <v n="Value">"SCROLLABLE"</v>
                     </o>
                     <o>
                       <v n="Id">363316305L</v>
@@ -667,7 +708,7 @@
                                 <l n="TypeNodeChildren" t="ArrayList" cet="BasicTypeNode">
                                   <o>
                                     <v n="Flags">2L</v>
-                                    <n n="BasicTypeNodeValue" />
+                                    <v n="BasicTypeNodeValue">"GVL_VCM.valve02"</v>
                                     <v n="BasicTypeNodeAcceptsExpression">true</v>
                                     <n n="BasicTypeNodeFastAccess" />
                                     <a n="BasicTypeNodeEnumValues" et="String" />
@@ -845,11 +886,11 @@
                     </o>
                     <o>
                       <v n="Id">550940142L</v>
-                      <v n="Value">731</v>
+                      <v n="Value">761</v>
                     </o>
                     <o>
                       <v n="Id">1473355128L</v>
-                      <v n="Value">18</v>
+                      <v n="Value">37</v>
                     </o>
                     <o>
                       <v n="Id">493260384L</v>
@@ -864,6 +905,10 @@
                       <v n="Value">""</v>
                     </o>
                     <o>
+                      <v n="Id">2597686782L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
                       <v n="Id">2473092364L</v>
                       <o n="Value" t="VisualizationNode">
                         <v n="VisuNodeReferenceGuid">{00000000-0000-0000-0000-000000000000}</v>
@@ -872,7 +917,7 @@
                         <l n="TypeNodeChildren" t="ArrayList" cet="BasicTypeNode">
                           <o>
                             <v n="Flags">2L</v>
-                            <v n="BasicTypeNodeValue">"GVL_VCM.valve01"</v>
+                            <v n="BasicTypeNodeValue">"GVL_VCM.valve02"</v>
                             <v n="BasicTypeNodeAcceptsExpression">true</v>
                             <n n="BasicTypeNodeFastAccess" />
                             <a n="BasicTypeNodeEnumValues" et="String" />
@@ -894,6 +939,35 @@
                             </o>
                             <v n="TypeNodeId" t="Int16">255</v>
                             <v n="TypeNodeIdLong">2584409864L</v>
+                            <n n="LibraryId" />
+                            <n n="DisplayTextId" />
+                            <n n="DescriptionTextID" />
+                            <v n="DescriptionUseParent">false</v>
+                          </o>
+                          <o>
+                            <v n="Flags">2L</v>
+                            <v n="BasicTypeNodeValue">"GVL_VCM.ioValve02"</v>
+                            <v n="BasicTypeNodeAcceptsExpression">true</v>
+                            <n n="BasicTypeNodeFastAccess" />
+                            <a n="BasicTypeNodeEnumValues" et="String" />
+                            <n n="EnumValueDisplayTextIds" />
+                            <n n="EnumValueVisibilityAttributeValues" />
+                            <n n="EnumValueLibraryId" />
+                            <n n="DynamicEnumMemberVisibilityCheckerTypeGuid" />
+                            <l n="TypeNodeChildren" t="ArrayList" />
+                            <o n="TypeNodeType" t="TypeNodeType">
+                              <v n="TypeClass" t="TypeClass">Reference</v>
+                              <v n="QualifiedName">"DUT_IO"</v>
+                              <v n="Name">"DUT_IO"</v>
+                            </o>
+                            <v n="TypeNodeName">"ValveIO"</v>
+                            <o n="TypeNodeAttributes" t="TypeNodeAttributes2">
+                              <v n="AttrFlags">0UL</v>
+                              <d n="TypeNodeAttributesData" t="CaseInsensitiveHashtable" />
+                              <v n="ConvDone">true</v>
+                            </o>
+                            <v n="TypeNodeId" t="Int16">256</v>
+                            <v n="TypeNodeIdLong">1828834575L</v>
                             <n n="LibraryId" />
                             <n n="DisplayTextId" />
                             <n n="DescriptionTextID" />
@@ -927,12 +1001,16 @@
                       </o>
                     </o>
                     <o>
-                      <v n="Id">2597686782L</v>
+                      <v n="Id">1013868361L</v>
                       <v n="Value">true</v>
                     </o>
                     <o>
                       <v n="Id">2584409864L</v>
-                      <v n="Value">"GVL_VCM.valve01"</v>
+                      <v n="Value">"GVL_VCM.valve02"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1828834575L</v>
+                      <v n="Value">"GVL_VCM.ioValve02"</v>
                     </o>
                   </l>
                 </o>
@@ -1109,12 +1187,12 @@
           <o n="TextDocument" t="TextDocument">
             <a n="TextLines" cet="TextLine">
               <o>
-                <v n="Id">2L</v>
+                <v n="Id">4L</v>
                 <n n="Tag" />
                 <v n="Text">"VAR_IN_OUT"</v>
               </o>
               <o>
-                <v n="Id">3L</v>
+                <v n="Id">5L</v>
                 <n n="Tag" />
                 <v n="Text">"	"</v>
               </o>
@@ -1142,13 +1220,13 @@
             <d2 n="Size" ckt="Int32" cvt="VisualObjectSize">
               <v>0</v>
               <o>
-                <v n="Width">1024</v>
-                <v n="Height">768</v>
+                <v n="Width">1400</v>
+                <v n="Height">800</v>
               </o>
               <v>1</v>
               <o>
-                <v n="Width">1024</v>
-                <v n="Height">768</v>
+                <v n="Width">1400</v>
+                <v n="Height">800</v>
               </o>
             </d2>
             <v n="Version">1</v>
