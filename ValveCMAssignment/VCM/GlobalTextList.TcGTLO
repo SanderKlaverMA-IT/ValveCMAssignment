@@ -291,6 +291,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"408"</v>
+              <v n="TextDefault">"Tag"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"934"</v>
+              <v n="TextDefault">"Tag: {Valve.TagName}"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"109"</v>
               <v n="TextDefault">"Temporary for Demo and testing"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -313,6 +323,11 @@
             <o>
               <v n="TextID">"350"</v>
               <v n="TextDefault">"Valve ## (FDS assignment)"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"170"</v>
+              <v n="TextDefault">"Valve (monostable)"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -343,6 +358,16 @@
             <o>
               <v n="TextID">"14"</v>
               <v n="TextDefault">"zichtbaar?"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"685"</v>
+              <v n="TextDefault">"{Valve.TagName}"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"380"</v>
+              <v n="TextDefault">"{Valve.TagName} - ??"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
           </l>

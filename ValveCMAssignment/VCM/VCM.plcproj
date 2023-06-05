@@ -16,6 +16,12 @@
     <Implicit_Jitter_Distribution>{39295219-db80-4df0-8456-16ccd9f17426}</Implicit_Jitter_Distribution>
     <LibraryReferences>{f3222f94-8aba-4608-be05-ab7a5fbb75a2}</LibraryReferences>
     <CompilerDefines>VISU_USEWSTRING</CompilerDefines>
+    <Company>MA-IT</Company>
+    <Released>true</Released>
+    <Title>Twincat 3 Tutorial</Title>
+    <ProjectVersion>1.0.0</ProjectVersion>
+    <Author>S. Klaver</Author>
+    <Description>This is a librarry tutorial project</Description>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DUTs\DUT_ALM.TcDUT">
