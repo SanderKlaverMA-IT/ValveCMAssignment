@@ -196,7 +196,7 @@
                             </o>
                             <o>
                               <v n="Id">743958181L</v>
-                              <v n="Value">"GVL_VCM.valve01.Sts.Open"</v>
+                              <v n="Value">"Valve.Sts.Open"</v>
                             </o>
                           </l>
                         </o>
@@ -654,7 +654,7 @@
                             </o>
                             <o>
                               <v n="Id">743958181L</v>
-                              <v n="Value">"GVL_VCM.valve01.Sts.Closed"</v>
+                              <v n="Value">"Valve.Sts.Closed"</v>
                             </o>
                           </l>
                         </o>
@@ -3401,7 +3401,7 @@
                             </o>
                             <o>
                               <v n="Id">743958181L</v>
-                              <v n="Value">"GVL_VCM.valve01.Sts.Interlock"</v>
+                              <v n="Value">"Valve.Sts.Interlock"</v>
                             </o>
                           </l>
                         </o>
@@ -4056,7 +4056,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"GVL_VCM.io_values.I_isOpen"</v>
+                          <v n="Value">"GVL_VCM.ioValve01.I_isOpen"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -4209,7 +4209,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"GVL_VCM.io_values.I_isClosed"</v>
+                          <v n="Value">"GVL_VCM.ioValve01.I_isClosed"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -4362,7 +4362,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"GVL_VCM.io_values.I_hasFailure"</v>
+                          <v n="Value">"GVL_VCM.ioValve01.I_hasFailure"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -5562,7 +5562,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"GVL_VCM.io_values.O_setOpen"</v>
+                          <v n="Value">"GVL_VCM.ioValve01.O_setOpen"</v>
                         </o>
                       </l>
                     </o>
@@ -6465,7 +6465,7 @@
               <o>
                 <v n="Id">3L</v>
                 <n n="Tag" />
-                <v n="Text">"	"</v>
+                <v n="Text">"	Valve: DUT_VALVE;"</v>
               </o>
               <o>
                 <v n="Id">1L</v>

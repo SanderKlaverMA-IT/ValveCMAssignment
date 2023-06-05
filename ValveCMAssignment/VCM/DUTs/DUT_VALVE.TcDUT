@@ -7,6 +7,7 @@ STRUCT
 	Hmi: DUT_HMI;
 	Sts: DUT_STS;
 	Alm: DUT_ALM;
+	TagName: STRING := '###';
 END_STRUCT
 END_TYPE
 ]]></Declaration>
