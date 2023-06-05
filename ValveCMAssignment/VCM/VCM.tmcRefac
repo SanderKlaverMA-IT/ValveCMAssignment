@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Refactors>
+  <Renames>
+    <RenamedSymbol>
+      <Type guid="fa8f2333-72af-4d12-8190-dfd5666fec84">GVL_VCM</Type>
+      <From>io_values</From>
+      <To>ioValve01</To>
+    </RenamedSymbol>
+  </Renames>
+</Refactors>
