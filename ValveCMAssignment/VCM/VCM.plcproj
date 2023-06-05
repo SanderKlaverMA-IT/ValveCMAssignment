@@ -55,6 +55,12 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Utilities\FB_DUT_HMI.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\FB_Integer_To_BooleanArray.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Visualization Manager.TcVMO">
       <SubType>Code</SubType>
     </Compile>
@@ -69,6 +75,7 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\Utilities" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

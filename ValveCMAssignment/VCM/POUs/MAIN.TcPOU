@@ -10,12 +10,11 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Set IN(IT)
-valve_01.MaxOpenCloseDuration := 5;// temp 5 for test should be 180 
+valve_01.MaxOpenCloseDuration := 180;// this setting can be reduced during test without the fysical Valve
 
 IF isFirstStart THEN
-	//GVL_VCM.io_values.I_isOpen := FALSE;
-GVL_VCM.io_values.I_isClosed := TRUE;
-//GVL_VCM.io_values.I_hasFailure := FALSE;
+	// Init the Valve at startup (for test/demo)
+	GVL_VCM.io_values.I_isClosed := TRUE;
 END_IF
 
 // Do stuff
@@ -23,7 +22,7 @@ valve_01(Valve:= GVL_VCM.valve01, I_O:= GVL_VCM.io_values);
 
 isFirstStart := FALSE;
 
-// for debugging
+// for debugging, can be removed after FAT
 GVL_VCM.io_values.I_isOpen;
 GVL_VCM.io_values.I_isClosed;
 GVL_VCM.io_values.I_hasFailure;
@@ -38,8 +37,9 @@ GVL_VCM.valve01.Alm.TimeFailure;]]></ST>
       <LineId Id="60" Count="0" />
       <LineId Id="76" Count="0" />
       <LineId Id="75" Count="0" />
-      <LineId Id="79" Count="1" />
-      <LineId Id="77" Count="1" />
+      <LineId Id="87" Count="0" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="78" Count="0" />
       <LineId Id="42" Count="1" />
       <LineId Id="37" Count="0" />
       <LineId Id="74" Count="0" />

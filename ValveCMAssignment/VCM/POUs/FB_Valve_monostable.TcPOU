@@ -15,6 +15,7 @@ END_VAR
 VAR
 	openingTimer: Tc2_Standard.TON;
 	closingTimer: Tc2_Standard.TON;
+	fbHmiDut: FB_DUT_HMI; 
 	manualOpen: BOOL;
 	manualClose: BOOL;
 	manualReset: BOOL;
@@ -24,11 +25,13 @@ VAR
 	isClosed: BOOL;
 	startOpeningTimeOut: BOOL;
 	startClosingTimeOut: BOOL;
+	fbDutHmi: FB_DUT_HMI;
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[{region Input} //set INTERNAL variables
-
+      <ST><![CDATA[{region Input} 
+//set INTERNAL variables
 // hmi-open command
 IF Valve.Hmi.Open THEN
 	manualOpen := TRUE;
@@ -47,22 +50,11 @@ IF Valve.Hmi.Reset OR manualReset THEN
 	Valve.Hmi.Reset := FALSE;
 END_IF 			
 
-// vragen: waar hoort deze code/logica, is Hmi logica kan niet in de struct ?? FB van maken ?
-// Get HMI modus and convert to local variables
-CASE Valve.Hmi.ModeValue OF
-    0: // Manual
-        Valve.Hmi.ManualOn := TRUE;
-        Valve.Hmi.ManualOff := FALSE;
-        Valve.Hmi.AutoOn := FALSE;
-        Valve.Hmi.AutoOff := FALSE;
-    1: // Auto
-        Valve.Hmi.ManualOn := FALSE;
-        Valve.Hmi.ManualOff := FALSE;
-        Valve.Hmi.AutoOn := TRUE;
-        Valve.Hmi.AutoOff := FALSE;
-END_CASE  
-
-
+// Created Utitlities FB's for learning, can also use altenative (simplefied) code here  
+// tried to avoid redunant (HMI) logic.
+fbDutHmi(hmiValue_in:= Valve.Hmi);
+Valve.Hmi := fbDutHmi.hmiValue_out;
+	 
 //Set HMI modus overide HMI by CS
 Valve.Hmi.DisableAutoManual := Valve.Cs.ManualOn OR Valve.Cs.AutoOn;
 IF Valve.Cs.ManualOn THEN
@@ -83,7 +75,8 @@ END_IF
 	  
 {endregion input}
 	 
-{region interlock manual auto}
+
+{region interlock-manual-auto}
 Valve.Sts.InSimulation := Valve.Cs.Simulation OR Valve.Hmi.Simulation; 
 Valve.Sts.Interlock := Valve.Cs.Interlock;
 
@@ -98,7 +91,7 @@ Valve.Sts.AutoMode:= NOT(Valve.Sts.ManualMode);
               
 // determine the actual or required state
 reqOpen S= (Valve.Sts.AutoMode AND Valve.Cs.Open) OR (Valve.Sts.ManualMode AND manualOpen);
-reqOpen R= isOpen; //Warning: Valve is monostable, do not use isOpen as reset!
+reqOpen R= isOpen;
 reqClose S= Valve.Sts.Interlock OR (Valve.Sts.AutoMode AND Valve.Cs.Close) OR (Valve.Sts.ManualMode AND manualClose);
 reqClose R= isClosed;
 isOpen S= I_O.I_isOpen OR (Valve.Sts.InSimulation AND reqOpen);
@@ -175,8 +168,8 @@ Valve.Alm.InAlarm := Valve.Alm.GeneralFailure OR Valve.Alm.TimeFailure OR Valve.
 {endregion}
 
 {region outputs}
-// set output: O_setOpen
-I_O.O_setOpen S= (Valve.Sts.Opening OR Valve.Sts.Open);
+// set/reset output (O_setOpen)
+I_O.O_setOpen S= (Valve.Sts.Opening OR Valve.Sts.Open); //Warning: Valve is monostable, keep output also open on status: Valve.Sts.Open
 I_O.O_setOpen R= Valve.Sts.Closing OR Valve.Sts.Interlock OR Valve.Sts.InSimulation;
 
 {endregion}
@@ -189,7 +182,16 @@ I_O.O_setOpen R= Valve.Sts.Closing OR Valve.Sts.Interlock OR Valve.Sts.InSimulat
 ]]></ST>
     </Implementation>
     <LineIds Name="FB_Valve_monostable">
-      <LineId Id="1490" Count="69" />
+      <LineId Id="1490" Count="0" />
+      <LineId Id="1732" Count="0" />
+      <LineId Id="1492" Count="16" />
+      <LineId Id="1773" Count="2" />
+      <LineId Id="1784" Count="0" />
+      <LineId Id="1525" Count="0" />
+      <LineId Id="1783" Count="0" />
+      <LineId Id="1526" Count="19" />
+      <LineId Id="1733" Count="0" />
+      <LineId Id="1546" Count="13" />
       <LineId Id="1694" Count="1" />
       <LineId Id="1561" Count="1" />
       <LineId Id="1696" Count="2" />
