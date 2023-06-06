@@ -181,18 +181,6 @@ I_O.O_setOpen R= Valve.Sts.Closing OR Valve.Sts.Interlock OR Valve.Sts.InSimulat
 {endregion}
 ]]></ST>
     </Implementation>
-    <Method Name="METH_TryMe" Id="{64843838-9035-436a-a4a2-b85bfe6a1af7}">
-      <Declaration><![CDATA[METHOD INTERNAL METH_TryMe : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[
-IF TRUE THEN
-	//just comment
-END_IF]]></ST>
-      </Implementation>
-    </Method>
     <LineIds Name="FB_Valve_monostable">
       <LineId Id="1490" Count="0" />
       <LineId Id="1732" Count="0" />
@@ -241,11 +229,6 @@ END_IF]]></ST>
       <LineId Id="1681" Count="0" />
       <LineId Id="1655" Count="0" />
       <LineId Id="36" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_Valve_monostable.METH_TryMe">
-      <LineId Id="7" Count="0" />
-      <LineId Id="6" Count="0" />
-      <LineId Id="8" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

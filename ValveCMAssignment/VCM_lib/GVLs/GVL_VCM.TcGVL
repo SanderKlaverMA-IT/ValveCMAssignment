@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL_VCM" Id="{fa8f2333-72af-4d12-8190-dfd5666fec84}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	valve01: DUT_VALVE;
+	ioValve01: DUT_IO;
+	valve02: DUT_VALVE;
+	ioValve02: DUT_IO;
+END_VAR
+
+VAR_GLOBAL CONSTANT
+	STS_UNDEFINED : INT := 0;
+	STS_CLOSED : INT := 10;
+	STS_OPENING : INT := 20;
+	STS_OPEN : INT := 30;
+	STS_CLOSING : INT := 40;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

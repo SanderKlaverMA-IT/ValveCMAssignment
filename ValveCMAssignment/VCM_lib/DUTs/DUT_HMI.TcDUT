@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="DUT_HMI" Id="{7e2b4294-76ca-47d6-8c7b-fda0034aae6c}">
+    <Declaration><![CDATA[TYPE DUT_HMI EXTENDS DUT_Control_Base :
+STRUCT
+	ModeValue : INT:= 1; // 0: Manual; 1: Auto;
+	DisableAutoManual : BOOL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

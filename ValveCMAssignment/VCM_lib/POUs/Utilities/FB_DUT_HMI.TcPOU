@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_DUT_HMI" Id="{8dea0cd6-75c6-4238-96cd-3bb63aa9c25d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK PUBLIC FB_DUT_HMI
+VAR_INPUT
+END_VAR
+VAR_INPUT
+    hmiValue_in: DUT_HMI;
+END_VAR
+VAR_OUTPUT
+    hmiValue_out: DUT_HMI;
+END_VAR
+VAR
+    intToBool: FB_Integer_To_BooleanArray;
+    rbModeValues : ARRAY[0..1] OF BOOL;
+	i: INT;
+	ArrayLength: INT;
+	OutputValue: INT;
+	IntegerValue: INT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+//Convert HMI radioButton to BOOL
+intToBool(IntegerValue:= hmiValue_in.ModeValue, ArrayLength:= 2);
+hmiValue_out := hmiValue_in;
+// Use BOOL array to set DUT_HMI values
+rbModeValues := intToBool.OutputValue;	 
+hmiValue_out.ManualOn := rbModeValues[0];
+hmiValue_out.ManualOff := NOT rbModeValues[0];
+hmiValue_out.AutoOn := rbModeValues[1];
+hmiValue_out.AutoOff := NOT rbModeValues[1];]]></ST>
+    </Implementation>
+    <LineIds Name="FB_DUT_HMI">
+      <LineId Id="36" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="16" Count="3" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
