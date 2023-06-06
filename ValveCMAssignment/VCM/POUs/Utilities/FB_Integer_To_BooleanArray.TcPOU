@@ -3,7 +3,7 @@
   <POU Name="FB_Integer_To_BooleanArray" Id="{acd2210e-3c7d-46ac-a1a0-7ba37313b6e6}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Integer_To_BooleanArray
 VAR_INPUT
-	IntegerValue: INT := -1; // Inte value from Radiobutoon or whatever indexed component
+	IntegerValue: INT := -1; // Int value from RadioButton or whatever indexed component
 	ArrayLength: INT := 2; // rquired length of the output Array 
 END_VAR
 VAR_OUTPUT
@@ -16,13 +16,14 @@ END_VAR
     <Implementation>
       <ST><![CDATA[
 
-
-
-]]></ST>
+FOR i := 0 TO (ArrayLength -1) DO
+    OutputValue[i] := (IntegerValue = i);    // Set the corresponding boolean value based on the radiobutton value
+END_FOR]]></ST>
     </Implementation>
     <LineIds Name="FB_Integer_To_BooleanArray">
       <LineId Id="40" Count="0" />
-      <LineId Id="30" Count="2" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="52" Count="1" />
       <LineId Id="9" Count="0" />
     </LineIds>
   </POU>
