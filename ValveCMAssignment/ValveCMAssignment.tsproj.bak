@@ -2,10 +2,14 @@
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.44">
 	<Project ProjectGUID="{C4F80482-4D8A-40AC-A3D1-4941139B0DB0}" Target64Bit="true" ShowHideConfigurations="#x106">
 		<System>
-			<Settings MaxCpus="16" NonWinCpus="2">
-				<Cpu CpuId="14"/>
-				<Cpu CpuId="15"/>
-			</Settings>
+			<Settings MaxCpus="2" NonWinCpus="1"/>
+			<Licenses>
+				<Target>
+					<ManualSelect>{56ADDFFF-32FF-4DC7-A432-0D2D8413616A}</ManualSelect>
+					<ManualSelect>{777F1598-583B-4503-99BB-7C02E0ABD97E}</ManualSelect>
+					<ManualSelect>{A1AF8A04-C08D-4853-A5A0-0E6C3A278A8C}</ManualSelect>
+				</Target>
+			</Licenses>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
@@ -17,7 +21,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{0727CBA7-EBFC-4006-A00E-6414C5E9C816}" Name="VCM" PrjFilePath="VCM\VCM.plcproj" TmcFilePath="VCM\VCM.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="VCM\VCM.tmc" TmcHash="{CDE481E7-C3C6-6622-44ED-AC839314C39E}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="VCM\VCM.tmc" TmcHash="{DFF4B1F0-CA47-3DD2-1542-C12A771B9C8A}">
 					<Name>VCM Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

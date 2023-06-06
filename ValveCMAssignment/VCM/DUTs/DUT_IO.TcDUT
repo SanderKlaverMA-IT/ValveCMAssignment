@@ -3,10 +3,10 @@
   <DUT Name="DUT_IO" Id="{bcab29c5-b057-4a7d-8b92-5d4128defdf4}">
     <Declaration><![CDATA[TYPE DUT_IO :
 STRUCT
-	I_isOpen: BOOL := FALSE;
-	I_isClosed: BOOL := FALSE;
-	I_hasFailure: BOOL := FALSE;
-	O_setOpen: BOOL := FALSE;
+	I_isOpen : BOOL := FALSE;
+	I_isClosed  : BOOL := FALSE;
+	I_hasFailure  : BOOL := FALSE;
+	O_setOpen  : BOOL := FALSE;
 END_STRUCT
 END_TYPE
 ]]></Declaration>
