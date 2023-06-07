@@ -16,9 +16,6 @@ VAR
 	openingTimer: Tc2_Standard.TON;
 	closingTimer: Tc2_Standard.TON;
 	fbHmiDut: FB_DUT_HMI; 
-	manualOpen: BOOL;
-	manualClose: BOOL;
-	manualReset: BOOL;
 	t_reqOpen: BOOL;
 	t_reqClose: BOOL;
 	t_isOpen: BOOL;
@@ -27,34 +24,36 @@ VAR
 	startClosingTimeOut: BOOL;
 	t_ioException: BOOL;
 	t_stateIoException: BOOL;
-	t_csException: BOOL;
 	a_setOpen: BOOL;
 	a_simIoIsOpen: BOOL;
 	a_simIoIsClosed: BOOL;
+	t_manualClose: BOOL;
+	t_manualOpen: BOOL;
+	t_manualReset: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[{region Input} 
-//set INTERNAL variables
+	 
 // hmi-open command
 IF Valve.Hmi.Open THEN
-	manualOpen := TRUE;
+	t_manualOpen := TRUE;
 	Valve.Hmi.Open := FALSE;
 END_IF
 
 // hmi-close command
 IF Valve.Hmi.Close THEN
-	manualClose := TRUE;
+	t_manualClose := TRUE;
 	Valve.Hmi.Close := FALSE;
 END_IF
 
 // manual_reset command
-IF Valve.Hmi.Reset OR manualReset THEN
-	manualReset := TRUE;
+IF Valve.Hmi.Reset THEN
+	t_manualReset := TRUE;
 	Valve.Hmi.Reset := FALSE;
 END_IF 			
 
-
+Valve.Cs.Open := Valve.Cs.Open AND NOT (Valve.Cs.Close);
 {endregion input}
 
 {region manual-auto}
@@ -64,10 +63,21 @@ Valve.Hmi := fbHmiDut.hmiValue_out;
 
 //Set HMI modus overide HMI by CS => (dominant)
 Valve.Hmi.DisableAutoManual := Valve.Cs.ManualOn OR Valve.Cs.AutoOn OR Valve.Cs.Interlock;
-Valve.Hmi.ManualOn := Valve.Cs.ManualOn AND NOT (Valve.Cs.AutoOn);
-Valve.Hmi.ManualOff := Valve.Cs.AutoOn OR NOT (Valve.Cs.ManualOn);
-Valve.Hmi.AutoOn := Valve.Cs.AutoOn;
-Valve.Hmi.AutoOff := NOT (Valve.Cs.AutoOn);
+	 
+Valve.Hmi.DisableAutoManual := Valve.Cs.ManualOn OR Valve.Cs.AutoOn;
+IF Valve.Cs.ManualOn THEN
+	Valve.Hmi.ModeValue := 0;
+END_IF
+
+IF Valve.Cs.AutoOn THEN
+	Valve.Hmi.ModeValue := 1;
+END_IF	  
+			   
+					
+Valve.Hmi.AutoOn := Valve.Hmi.ModeValue = 1;
+Valve.Hmi.AutoOff := NOT (Valve.Hmi.AutoOn);
+Valve.Hmi.ManualOn := Valve.Hmi.AutoOff;
+Valve.Hmi.ManualOff := NOT (Valve.Hmi.ManualOn);
 
 // Set Auto/Manual mode
 // CS is Dominant over HMI
@@ -84,10 +94,10 @@ Valve.Sts.Interlock := Valve.Cs.Interlock;
 	 
 {region internal/temp variables}	 
 // determine the actual or required state
-t_reqClose := (Valve.Sts.Interlock OR (Valve.Sts.AutoMode AND Valve.Cs.Close) OR (Valve.Sts.ManualMode AND manualClose)) AND NOT (t_isClosed);
-t_reqOpen := ((Valve.Sts.AutoMode AND Valve.Cs.Open) OR (Valve.Sts.ManualMode AND manualOpen)) AND NOT (t_reqClose OR t_isOpen OR Valve.Sts.Interlock);
 t_isClosed := I_O.I_isClosed OR (Valve.Sts.InSimulation AND t_reqClose);
 t_isOpen := I_O.I_isOpen OR (Valve.Sts.InSimulation AND t_reqOpen);
+t_reqClose := (Valve.Sts.Interlock OR (Valve.Sts.AutoMode AND Valve.Cs.Close) OR (Valve.Sts.ManualMode AND t_manualClose)) AND NOT (t_isClosed);
+t_reqOpen := NOT (t_reqClose OR t_isOpen OR Valve.Sts.Interlock) AND ((Valve.Sts.AutoMode AND Valve.Cs.Open) OR (Valve.Sts.ManualMode AND t_manualOpen));
 {endregion}
 
 {region control coördination} 
@@ -140,27 +150,25 @@ closingTimer(IN := startClosingTimeOut, PT:= INT_TO_TIME(MaxOpenCloseDuration * 
 {endregion}
 
 
-IF Valve.Cs.Reset OR manualReset THEN
+IF Valve.Cs.Reset OR t_manualReset THEN
 	//reset inAlarm only demand
     Valve.Alm.InAlarm := FALSE;
 END_IF
 
 // check if failure(s) (still) exist.
-t_csException := (Valve.Cs.Open AND Valve.Cs.Close) OR (Valve.Cs.Manual and Valve.Cs.Auto);
 t_stateIoException := (Valve.Sts.Open AND NOT (I_O.I_isOpen)) OR (Valve.Sts.Closed AND NOT (I_O.I_isClosed));
 t_ioException := I_O.I_isClosed AND I_O.I_isOpen;	 
 Valve.Alm.TimeFailure := openingTimer.Q OR closingTimer.Q; // Set TimeFailure on opening or closing timeOut
 Valve.Alm.IsHealthy := I_O.I_isHealthy; // Set GeneralFailure
 Valve.Alm.InAlarm := NOT (Valve.Alm.IsHealthy) OR Valve.Alm.TimeFailure OR t_ioException OR t_stateIoException OR Valve.Alm.InAlarm;
+
 {endregion}
 
 {region Actions}
 
 // set/reset output (O_setOpen)
-a_setOpen S= (Valve.Sts.Opening OR Valve.Sts.Open) AND NOT (Valve.Alm.InAlarm); //Warning: Valve is monostable, keep output also open on status: Valve.Sts.Open
+a_setOpen S= (Valve.Sts.Opening OR Valve.Sts.Open); //Warning: Valve is monostable, keep output also open on status: Valve.Sts.Open
 a_setOpen R= Valve.Sts.Closing OR Valve.Sts.Interlock OR Valve.Sts.InSimulation;
-
-
 {endregion}
 
 
@@ -168,32 +176,16 @@ a_setOpen R= Valve.Sts.Closing OR Valve.Sts.Interlock OR Valve.Sts.InSimulation;
 // set/reset output (O_setOpen)
 I_O.O_setOpen := a_setOpen;
 
-
-{endregion}
-
-{region cleanup state}
-	manualClose R= TRUE;
-	manualOpen R= TRUE;
-	manualReset R= TRUE;
+t_manualClose R= TRUE;
+t_manualOpen R= TRUE;
+t_manualReset R= TRUE;
 {endregion}
 ]]></ST>
     </Implementation>
     <LineIds Name="Valve_mono">
-      <LineId Id="3345" Count="118" />
-      <LineId Id="3478" Count="0" />
-      <LineId Id="3477" Count="0" />
-      <LineId Id="3481" Count="0" />
-      <LineId Id="3490" Count="1" />
-      <LineId Id="3489" Count="0" />
-      <LineId Id="3493" Count="0" />
-      <LineId Id="3492" Count="0" />
-      <LineId Id="3480" Count="0" />
-      <LineId Id="3479" Count="0" />
-      <LineId Id="3464" Count="1" />
-      <LineId Id="3487" Count="1" />
-      <LineId Id="3468" Count="5" />
-      <LineId Id="3494" Count="0" />
-      <LineId Id="3475" Count="1" />
+      <LineId Id="3927" Count="122" />
+      <LineId Id="4051" Count="4" />
+      <LineId Id="4057" Count="18" />
       <LineId Id="36" Count="0" />
     </LineIds>
   </POU>

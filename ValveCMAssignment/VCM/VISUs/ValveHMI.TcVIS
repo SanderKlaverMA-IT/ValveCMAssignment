@@ -196,7 +196,7 @@
                             </o>
                             <o>
                               <v n="Id">743958181L</v>
-                              <v n="Value">"GVL_VCM.valve01.Sts.Open"</v>
+                              <v n="Value">"GVL_VCM.io_values.I_isOpen"</v>
                             </o>
                           </l>
                         </o>
@@ -654,7 +654,7 @@
                             </o>
                             <o>
                               <v n="Id">743958181L</v>
-                              <v n="Value">"GVL_VCM.valve01.Sts.Closed"</v>
+                              <v n="Value">"GVL_VCM.io_values.I_isClosed"</v>
                             </o>
                           </l>
                         </o>
@@ -4063,12 +4063,12 @@
                           <v n="Value">false</v>
                         </o>
                         <o>
-                          <v n="Id">823443203L</v>
-                          <v n="Value">"233"</v>
-                        </o>
-                        <o>
                           <v n="Id">2496894244L</v>
                           <v n="Value">"NOT GVL_VCM.valve01.Hmi.Simulation"</v>
+                        </o>
+                        <o>
+                          <v n="Id">823443203L</v>
+                          <v n="Value">"233"</v>
                         </o>
                       </l>
                     </o>
@@ -4220,12 +4220,12 @@
                           <v n="Value">false</v>
                         </o>
                         <o>
-                          <v n="Id">823443203L</v>
-                          <v n="Value">"904"</v>
-                        </o>
-                        <o>
                           <v n="Id">2496894244L</v>
                           <v n="Value">"NOT GVL_VCM.valve01.Hmi.Simulation"</v>
+                        </o>
+                        <o>
+                          <v n="Id">823443203L</v>
+                          <v n="Value">"904"</v>
                         </o>
                       </l>
                     </o>
@@ -4377,12 +4377,12 @@
                           <v n="Value">false</v>
                         </o>
                         <o>
-                          <v n="Id">823443203L</v>
-                          <v n="Value">"64"</v>
-                        </o>
-                        <o>
                           <v n="Id">2496894244L</v>
                           <v n="Value">"NOT GVL_VCM.valve01.Hmi.Simulation"</v>
+                        </o>
+                        <o>
+                          <v n="Id">823443203L</v>
+                          <v n="Value">"64"</v>
                         </o>
                       </l>
                     </o>
