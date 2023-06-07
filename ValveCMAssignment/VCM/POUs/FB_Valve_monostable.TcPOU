@@ -29,6 +29,7 @@ VAR
 	startClosingTimeOut: BOOL;
 	ioFailure: BOOL;
 	ioStateFailure: BOOL;
+	csFailure: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -168,6 +169,7 @@ IF Valve.Cs.Reset OR manualReset THEN
 END_IF
 	 
 // check if failure(s) (still) exist.
+csFailure := (Valve.Cs.Open AND Valve.Cs.Close) OR (Valve.Cs.Manual and Valve.Cs.Auto);
 ioStateFailure := (Valve.Sts.Open AND NOT (I_O.I_isOpen)) OR (Valve.Sts.Closed AND NOT (I_O.I_isClosed));
 ioFailure := I_O.I_isClosed AND I_O.I_isOpen;	 
 Valve.Alm.TimeFailure := openingTimer.Q OR closingTimer.Q; // Set TimeFailure on opening or closing timeOut
@@ -177,7 +179,7 @@ Valve.Alm.InAlarm := NOT (Valve.Alm.IsHealthy) OR Valve.Alm.TimeFailure OR ioFai
 
 {region outputs}
 // set/reset output (O_setOpen)
-I_O.O_setOpen S= (Valve.Sts.Opening OR Valve.Sts.Open); //Warning: Valve is monostable, keep output also open on status: Valve.Sts.Open
+I_O.O_setOpen S= (Valve.Sts.Opening OR Valve.Sts.Open) AND NOT (Valve.Alm.InAlarm); //Warning: Valve is monostable, keep output also open on status: Valve.Sts.Open
 I_O.O_setOpen R= Valve.Sts.Closing OR Valve.Sts.Interlock OR Valve.Sts.InSimulation;
 
 {endregion}
@@ -198,6 +200,7 @@ I_O.O_setOpen R= Valve.Sts.Closing OR Valve.Sts.Interlock OR Valve.Sts.InSimulat
       <LineId Id="1912" Count="61" />
       <LineId Id="1994" Count="0" />
       <LineId Id="1974" Count="0" />
+      <LineId Id="2001" Count="0" />
       <LineId Id="1993" Count="0" />
       <LineId Id="1975" Count="17" />
       <LineId Id="36" Count="0" />

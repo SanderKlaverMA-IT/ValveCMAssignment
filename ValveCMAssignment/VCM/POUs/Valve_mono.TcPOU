@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Valve_mono" Id="{9c88ac18-dd17-4ae7-b56c-d8d32754d3a0}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Valve_mono
+VAR_INPUT
+	MaxOpenCloseDuration: INT; //(s) Maximum time the valve needs to open or close in seconds
+END_VAR
+VAR_OUTPUT
+	setOpen: BOOL;
+END_VAR
+VAR_IN_OUT
+	Valve: DUT_VALVE;
+	I_O: DUT_IO;
+END_VAR
+VAR
+	openingTimer: Tc2_Standard.TON;
+	closingTimer: Tc2_Standard.TON;
+	fbHmiDut: FB_DUT_HMI; 
+	manualOpen: BOOL;
+	manualClose: BOOL;
+	manualReset: BOOL;
+	t_reqOpen: BOOL;
+	t_reqClose: BOOL;
+	t_isOpen: BOOL;
+	t_isClosed: BOOL;
+	startOpeningTimeOut: BOOL;
+	startClosingTimeOut: BOOL;
+	t_ioException: BOOL;
+	t_stateIoException: BOOL;
+	t_csException: BOOL;
+	a_setOpen: BOOL;
+	a_simIoIsOpen: BOOL;
+	a_simIoIsClosed: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[{region Input} 
+//set INTERNAL variables
+// hmi-open command
+IF Valve.Hmi.Open THEN
+	manualOpen := TRUE;
+	Valve.Hmi.Open := FALSE;
+END_IF
+
+// hmi-close command
+IF Valve.Hmi.Close THEN
+	manualClose := TRUE;
+	Valve.Hmi.Close := FALSE;
+END_IF
+
+// manual_reset command
+IF Valve.Hmi.Reset OR manualReset THEN
+	manualReset := TRUE;
+	Valve.Hmi.Reset := FALSE;
+END_IF 			
+
+
+{endregion input}
+
+{region manual-auto}
+// Convert HMI radioButton input to BOOL's
+fbHmiDut(hmiValue_in:= Valve.Hmi);
+Valve.Hmi := fbHmiDut.hmiValue_out;
+
+//Set HMI modus overide HMI by CS => (dominant)
+Valve.Hmi.DisableAutoManual := Valve.Cs.ManualOn OR Valve.Cs.AutoOn OR Valve.Cs.Interlock;
+Valve.Hmi.ManualOn := Valve.Cs.ManualOn AND NOT (Valve.Cs.AutoOn);
+Valve.Hmi.ManualOff := Valve.Cs.AutoOn OR NOT (Valve.Cs.ManualOn);
+Valve.Hmi.AutoOn := Valve.Cs.AutoOn;
+Valve.Hmi.AutoOff := NOT (Valve.Cs.AutoOn);
+
+// Set Auto/Manual mode
+// CS is Dominant over HMI
+Valve.Sts.ManualMode S= (Valve.Cs.Manual OR Valve.Hmi.ManualOn) AND NOT(Valve.Cs.Auto);
+Valve.Sts.ManualMode R= (Valve.Cs.Auto OR Valve.Hmi.AutoOn) AND NOT(Valve.Cs.Manual);
+Valve.Sts.AutoMode:= NOT(Valve.Sts.ManualMode);
+
+// Get Interlock and simulation from CS and HMI
+Valve.Sts.InSimulation := Valve.Cs.Simulation OR Valve.Hmi.Simulation; 
+Valve.Sts.Interlock := Valve.Cs.Interlock;	 
+		  
+{endregion interlock manual auto}
+	 
+	 
+{region internal/temp variables}	 
+// determine the actual or required state
+t_reqClose := (Valve.Sts.Interlock OR (Valve.Sts.AutoMode AND Valve.Cs.Close) OR (Valve.Sts.ManualMode AND manualClose)) AND NOT (t_isClosed);
+t_reqOpen := ((Valve.Sts.AutoMode AND Valve.Cs.Open) OR (Valve.Sts.ManualMode AND manualOpen)) AND NOT (t_reqClose OR t_isOpen OR Valve.Sts.Interlock);
+t_isClosed := I_O.I_isClosed OR (Valve.Sts.InSimulation AND t_reqClose);
+t_isOpen := I_O.I_isOpen OR (Valve.Sts.InSimulation AND t_reqOpen);
+{endregion}
+
+{region control coördination} 
+// INIT STS.State zet to CLOSING if UNDEFINED
+IF Valve.Sts.State = GVL_VCM.STS_UNDEFINED THEN
+	Valve.Sts.State := GVL_VCM.STS_CLOSING;		 
+END_IF
+// set state
+CASE Valve.Sts.State OF
+    GVL_VCM.STS_CLOSED: 
+	    IF t_reqOpen THEN
+    		Valve.Sts.State := GVL_VCM.STS_OPENING;
+		END_IF       
+    GVL_VCM.STS_OPENING: 
+       	IF t_reqClose THEN
+   			Valve.Sts.State := GVL_VCM.STS_CLOSING;
+		ELSIF t_isOpen THEN
+			Valve.Sts.State := GVL_VCM.STS_OPEN;
+		END_IF  	  
+    GVL_VCM.STS_OPEN: 
+        IF t_reqClose THEN
+    		Valve.Sts.State := GVL_VCM.STS_Closing;
+		END_IF       
+    GVL_VCM.STS_CLOSING:
+        	IF t_reqOpen THEN
+   			Valve.Sts.State := GVL_VCM.STS_OPENING;
+		ELSIF t_isClosed THEN
+			Valve.Sts.State := GVL_VCM.STS_CLOSED;
+		END_IF  	  
+END_CASE
+
+Valve.Sts.Closed := Valve.Sts.State = GVL_VCM.STS_CLOSED;
+Valve.Sts.Opening := Valve.Sts.State = GVL_VCM.STS_OPENING;
+Valve.Sts.Open := Valve.Sts.State = GVL_VCM.STS_OPEN;
+Valve.Sts.Closing := Valve.Sts.State = GVL_VCM.STS_CLOSING;
+{endregion}
+
+{region set timer guard for opening and closing}
+// Don't use the same timer for opening or closing in case opening or closing is called while previous opening or closing action isn't finished yet.
+// Can only be done if a 'DirectionChanged' variable is used. 
+// opening timeout guard
+startOpeningTimeOut S= NOT (Valve.Sts.Interlock) AND Valve.Sts.Opening;
+startOpeningTimeOut R= Valve.Sts.Open OR Valve.Sts.Closing;
+openingTimer(IN := startOpeningTimeOut, PT:= INT_TO_TIME(MaxOpenCloseDuration * 1000));
+// closing timeout guard
+startClosingTimeOut S= Valve.Sts.Interlock OR Valve.Sts.Closing;
+startClosingTimeOut R= Valve.Sts.Closed OR Valve.Sts.Opening;
+closingTimer(IN := startClosingTimeOut, PT:= INT_TO_TIME(MaxOpenCloseDuration * 1000));
+
+{endregion}
+
+
+IF Valve.Cs.Reset OR manualReset THEN
+	//reset inAlarm only demand
+    Valve.Alm.InAlarm := FALSE;
+END_IF
+
+// check if failure(s) (still) exist.
+t_csException := (Valve.Cs.Open AND Valve.Cs.Close) OR (Valve.Cs.Manual and Valve.Cs.Auto);
+t_stateIoException := (Valve.Sts.Open AND NOT (I_O.I_isOpen)) OR (Valve.Sts.Closed AND NOT (I_O.I_isClosed));
+t_ioException := I_O.I_isClosed AND I_O.I_isOpen;	 
+Valve.Alm.TimeFailure := openingTimer.Q OR closingTimer.Q; // Set TimeFailure on opening or closing timeOut
+Valve.Alm.IsHealthy := I_O.I_isHealthy; // Set GeneralFailure
+Valve.Alm.InAlarm := NOT (Valve.Alm.IsHealthy) OR Valve.Alm.TimeFailure OR t_ioException OR t_stateIoException OR Valve.Alm.InAlarm;
+{endregion}
+
+{region Actions}
+
+// set/reset output (O_setOpen)
+a_setOpen S= (Valve.Sts.Opening OR Valve.Sts.Open) AND NOT (Valve.Alm.InAlarm); //Warning: Valve is monostable, keep output also open on status: Valve.Sts.Open
+a_setOpen R= Valve.Sts.Closing OR Valve.Sts.Interlock OR Valve.Sts.InSimulation;
+
+
+{endregion}
+
+
+{region outputs}
+// set/reset output (O_setOpen)
+I_O.O_setOpen := a_setOpen;
+
+
+{endregion}
+
+{region cleanup state}
+	manualClose R= TRUE;
+	manualOpen R= TRUE;
+	manualReset R= TRUE;
+{endregion}
+]]></ST>
+    </Implementation>
+    <LineIds Name="Valve_mono">
+      <LineId Id="3345" Count="118" />
+      <LineId Id="3478" Count="0" />
+      <LineId Id="3477" Count="0" />
+      <LineId Id="3481" Count="0" />
+      <LineId Id="3490" Count="1" />
+      <LineId Id="3489" Count="0" />
+      <LineId Id="3493" Count="0" />
+      <LineId Id="3492" Count="0" />
+      <LineId Id="3480" Count="0" />
+      <LineId Id="3479" Count="0" />
+      <LineId Id="3464" Count="1" />
+      <LineId Id="3487" Count="1" />
+      <LineId Id="3468" Count="5" />
+      <LineId Id="3494" Count="0" />
+      <LineId Id="3475" Count="1" />
+      <LineId Id="36" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
