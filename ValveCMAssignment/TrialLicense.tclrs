@@ -1,34 +1,10 @@
 <?xml version="1.0"?>
 <TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
 	<LicenseInfo>
-		<SystemId>{1DDE3BB6-8F49-D995-5A2E-C461B902CEC0}</SystemId>
-		<IssueTime>2023-06-06T09:46:00</IssueTime>
+		<SystemId>{F3464A9D-0C8A-C39D-1C55-5DD6D29917DB}</SystemId>
+		<IssueTime>2023-06-06T12:49:00</IssueTime>
 		<ExpireTime>2023-06-14T00:00:00</ExpireTime>
-		<LicenseKey>05048e37247a8b670920940610954fff7960be39a5da27d9627ffa4b1ad66f9272f73c21c78cadac9418a5280802cbead73386753943a1d6becb59020ef11f2b96651d00355123c8349745e6c06072f31512f976ca569937fe199f24ff91ed781d8c409f8db3577599d69fa4e3e4c31561e304c29d2aea09acac6d12bff927a2de02a6f36c51372027ae3a36413c4b320ad0e5f113ce172351e53d43104fd4cdbcd69aa1adf2904b7c8a5b4b17d4837549319818af0002d1b0b22e34d2a6d28f27dd80a577d5d2b1844e77d7606a9bdad52684826d326cc766a0f890de25b6bdde425ce3f9ea139c3c34c34f138c3f60e1ee4ecd9fbbed2844170b627bc9fa45</LicenseKey>
-		<License>
-			<LicenseId>{4C256767-E6E6-4AF5-BD68-9F7ABAD0C200}</LicenseId>
-			<Name>TC3 ADS</Name>
-			<OrderNo>TC1000</OrderNo>
-		</License>
-		<License>
-			<LicenseId>{3FF18E97-7754-401B-93FB-70544DE28A13}</LicenseId>
-			<Name>TC3 IO</Name>
-			<OrderNo>TC1100</OrderNo>
-		</License>
-		<License>
-			<LicenseId>{66689887-CCBD-452C-AC9A-039D997C6E66}</LicenseId>
-			<Name>TC3 PLC</Name>
-			<OrderNo>TC1200</OrderNo>
-		</License>
-		<License>
-			<LicenseId>{D4390DEA-A64D-494D-9E09-275326DBB0CB}</LicenseId>
-			<Name>TC3 PLC-HMI (RT)</Name>
-		</License>
-		<License>
-			<LicenseId>{FDE02854-39A7-440C-9EAE-C234A16A3CED}</LicenseId>
-			<Name>TC3 PLC-HMI</Name>
-			<OrderNo>TF1800</OrderNo>
-		</License>
+		<LicenseKey>38d25839baf2a70d196bc2e17cf30eec41a048b2c63e26ae12412e36de20992239748d0974186730b5750f9ca192e68008e7ee32783f612d6f28cd39855f5df3cbb0bc45ea899058f98b780b13048f9622f9fea5292a42d2a535cb4c0cfbd030a11ed47c3e131c9b48478b8fae2c4e5b4e5640b37cb0ede4f43d55eace043de1d810d374c5d626887c1f6eac284762243112a662e5715d021ebc8cd7795bd48c19553af23f13fea8e051d344497ef6aea8cefd2837102d502029f1f180a036093d82e3ba0ef5150f8bb39c801a8f06c19f187d8e8bf9e7027cd31eb55474e74d5c35f2b295484ca9c6c30823999842ef3cc04d573ccf9d5baa92c0620efc3342</LicenseKey>
 		<License>
 			<LicenseId>{56ADDFFF-32FF-4DC7-A432-0D2D8413616A}</LicenseId>
 			<Name>TC3 Profinet IO-Device</Name>

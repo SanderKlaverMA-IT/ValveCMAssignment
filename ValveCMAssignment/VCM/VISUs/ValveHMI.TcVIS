@@ -4311,7 +4311,7 @@
                         </o>
                         <o>
                           <v n="Id">390574330L</v>
-                          <v n="Value">"SIM I_hasFailure"</v>
+                          <v n="Value">"SIM I_isHealthy"</v>
                         </o>
                         <o>
                           <v n="Id">4010712728L</v>
@@ -4362,7 +4362,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"GVL_VCM.io_values.I_hasFailure"</v>
+                          <v n="Value">"GVL_VCM.io_values.I_isHealthy"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -4370,7 +4370,7 @@
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
-                          <v n="Value">"371"</v>
+                          <v n="Value">"571"</v>
                         </o>
                       </l>
                     </o>
