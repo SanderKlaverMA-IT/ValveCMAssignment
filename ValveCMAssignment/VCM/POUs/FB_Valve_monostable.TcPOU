@@ -21,6 +21,8 @@ VAR
 	manualReset: BOOL;
 	reqOpen: BOOL;
 	reqClose: BOOL;
+	previousReqOpen: BOOL;
+	previousReqClose: BOOL;
 	isOpen: BOOL;
 	isClosed: BOOL;
 	startOpeningTimeOut: BOOL;
@@ -91,14 +93,17 @@ Valve.Sts.AutoMode:= NOT(Valve.Sts.ManualMode);
               
 // determine the actual or required state
 reqOpen S= (Valve.Sts.AutoMode AND Valve.Cs.Open) OR (Valve.Sts.ManualMode AND manualOpen);
-reqOpen R= isOpen OR Valve.Sts.Interlock;
+reqOpen R= isOpen OR Valve.Sts.Interlock OR previousReqOpen;
 reqClose S= Valve.Sts.Interlock OR (Valve.Sts.AutoMode AND Valve.Cs.Close) OR (Valve.Sts.ManualMode AND manualClose);
-reqClose R= isClosed;
+reqClose R= isClosed OR previousReqClose;
 isOpen S= I_O.I_isOpen OR (Valve.Sts.InSimulation AND reqOpen);
 isOpen R= NOT (I_O.I_isOpen);	 
 isClosed S= I_O.I_isClosed OR (Valve.Sts.InSimulation AND reqClose);
 isClosed R= NOT (I_O.I_isClosed);
-
+// arrange rising request signals for opening and closing
+previousReqOpen := reqOpen;
+previousReqClose := reqClose;
+	 
 // set state
 IF reqClose THEN
     Valve.Sts.State := GVL_VCM.STS_CLOSING;
@@ -167,7 +172,7 @@ ioStateFailure := (Valve.Sts.Open AND NOT (I_O.I_isOpen)) OR (Valve.Sts.Closed A
 ioFailure := I_O.I_isClosed AND I_O.I_isOpen;	 
 Valve.Alm.TimeFailure := openingTimer.Q OR closingTimer.Q; // Set TimeFailure on opening or closing timeOut
 Valve.Alm.IsHealthy := I_O.I_isHealthy; // Set GeneralFailure
-Valve.Alm.InAlarm := NOT (Valve.Alm.IsHealthy) OR Valve.Alm.TimeFailure OR ioFailure OR Valve.Alm.InAlarm;
+Valve.Alm.InAlarm := NOT (Valve.Alm.IsHealthy) OR Valve.Alm.TimeFailure OR ioFailure OR ioStateFailure OR Valve.Alm.InAlarm;
 {endregion}
 
 {region outputs}
@@ -185,7 +190,12 @@ I_O.O_setOpen R= Valve.Sts.Closing OR Valve.Sts.Interlock OR Valve.Sts.InSimulat
 ]]></ST>
     </Implementation>
     <LineIds Name="FB_Valve_monostable">
-      <LineId Id="1843" Count="130" />
+      <LineId Id="1843" Count="67" />
+      <LineId Id="1998" Count="0" />
+      <LineId Id="1911" Count="0" />
+      <LineId Id="1997" Count="0" />
+      <LineId Id="1999" Count="0" />
+      <LineId Id="1912" Count="61" />
       <LineId Id="1994" Count="0" />
       <LineId Id="1974" Count="0" />
       <LineId Id="1993" Count="0" />

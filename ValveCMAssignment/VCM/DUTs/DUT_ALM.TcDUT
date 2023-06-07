@@ -3,8 +3,8 @@
   <DUT Name="DUT_ALM" Id="{6758646b-b6b7-4d66-b478-11801b6873dc}">
     <Declaration><![CDATA[TYPE DUT_ALM :
 STRUCT
-	IsHealthy: BOOL;
-	TimeFailure: BOOL;
+	IsHealthy: BOOL := TRUE;
+	TimeFailure: BOOL := FALSE;
 	InAlarm: BOOL := TimeFailure OR NOT (IsHealthy);
 END_STRUCT
 END_TYPE

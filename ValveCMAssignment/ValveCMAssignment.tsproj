@@ -27,7 +27,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{0727CBA7-EBFC-4006-A00E-6414C5E9C816}" Name="VCM" PrjFilePath="VCM\VCM.plcproj" TmcFilePath="VCM\VCM.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="VCM\VCM.tmc" TmcHash="{FE2AC1E7-2327-4205-0427-2A8EBD50883D}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="VCM\VCM.tmc" TmcHash="{8C7F50EA-A64E-298F-293E-020190DA6737}">
 					<Name>VCM Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
