@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <DUT Name="DUT_VALVE" Id="{7768549f-516b-48d9-ba55-440da92000e0}">
+  <DUT Name="DUT_VALVE" Id="{e6b7e6f6-2682-4383-a671-71fb6f42c58c}">
     <Declaration><![CDATA[TYPE DUT_VALVE :
 STRUCT
 	Cs: DUT_CS;

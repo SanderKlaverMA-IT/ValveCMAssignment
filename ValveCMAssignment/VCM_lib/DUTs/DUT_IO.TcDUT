@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <DUT Name="DUT_IO" Id="{bcab29c5-b057-4a7d-8b92-5d4128defdf4}">
+  <DUT Name="DUT_IO" Id="{58cd96ab-b9f7-4ce1-bc12-5184398eafc7}">
     <Declaration><![CDATA[TYPE DUT_IO :
 STRUCT
 	I_isOpen: BOOL := FALSE;

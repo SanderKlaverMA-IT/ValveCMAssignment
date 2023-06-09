@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <POU Name="FB_Integer_To_BooleanArray" Id="{acd2210e-3c7d-46ac-a1a0-7ba37313b6e6}" SpecialFunc="None">
+  <POU Name="FB_Integer_To_BooleanArray" Id="{9a7ffdf6-7ab1-4186-9a02-e79d8507b734}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Integer_To_BooleanArray
 VAR_INPUT
 	IntegerValue: INT := -1; // Inte value from Radiobutoon or whatever indexed component

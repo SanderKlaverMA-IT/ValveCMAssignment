@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <POU Name="FB_Valve_monostable" Id="{960a4f6f-ad56-4762-b13b-5efd91056808}" SpecialFunc="None">
+  <POU Name="FB_Valve_monostable" Id="{1cd6c90b-c4e4-4d82-bc3a-27baa17871c6}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Valve_monostable
 VAR_INPUT
 	MaxOpenCloseDuration: INT; //(s) Maximum time the valve needs to open or close in seconds

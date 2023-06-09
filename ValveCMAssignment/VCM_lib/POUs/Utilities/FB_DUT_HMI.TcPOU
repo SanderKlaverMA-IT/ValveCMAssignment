@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <POU Name="FB_DUT_HMI" Id="{8dea0cd6-75c6-4238-96cd-3bb63aa9c25d}" SpecialFunc="None">
+  <POU Name="FB_DUT_HMI" Id="{87d783e6-29d2-456c-9ea2-387c9cd56c88}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK PUBLIC FB_DUT_HMI
 VAR_INPUT
 END_VAR

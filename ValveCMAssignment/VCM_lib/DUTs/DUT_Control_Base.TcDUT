@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <DUT Name="DUT_Control_Base" Id="{b6e1d523-0f0a-41db-aa44-7681e860b370}">
+  <DUT Name="DUT_Control_Base" Id="{e2a918e7-e4ea-455c-969c-2b8567061d2f}">
     <Declaration><![CDATA[TYPE DUT_Control_Base :
 STRUCT
 	Open :BOOL;

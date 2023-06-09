@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <Visu Name="ValveHMI" Id="{4057c5f4-4926-4faa-9281-d4bfa35f02eb}">
+  <Visu Name="ValveHMI" Id="{9d699baa-a51e-4b3e-a4f7-1e3158d66640}">
     <XmlArchive>
       <Data>
         <o xml:space="preserve" t="VisualObject">
@@ -6526,7 +6526,7 @@
                 <v>2112b754-e996-4887-be5d-058ab8442d5d</v>
               </d>
               <v n="FbName">"NotImportant"</v>
-              <v n="FbGuid">{4057c5f4-4926-4faa-9281-d4bfa35f02eb}</v>
+              <v n="FbGuid">{9d699baa-a51e-4b3e-a4f7-1e3158d66640}</v>
             </o>
             <v n="GeneratedGlobalVisuVarsGuid">{d21215d9-5232-42b6-b82a-cbb6edd05f0a}</v>
             <v n="GeneratedGlobalTheVisuVarlistGuid">{4af84305-8e14-40a7-8622-dbbee702cfd8}</v>

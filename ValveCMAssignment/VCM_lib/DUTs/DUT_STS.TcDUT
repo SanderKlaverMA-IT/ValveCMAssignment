@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <DUT Name="DUT_STS" Id="{0d7fb3f1-0e3b-441c-adba-aed480398811}">
+  <DUT Name="DUT_STS" Id="{5dea48e3-53b5-4e73-9a33-750a11544aa9}">
     <Declaration><![CDATA[TYPE DUT_STS :
 STRUCT
 	State : INT;

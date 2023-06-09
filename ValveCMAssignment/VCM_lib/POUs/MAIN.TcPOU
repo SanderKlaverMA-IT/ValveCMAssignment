@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <POU Name="MAIN" Id="{617330db-b8e1-492e-94bc-52a923c83901}" SpecialFunc="None">
+  <POU Name="MAIN" Id="{b05310ae-f2a0-489f-aa66-207cf49f8ef4}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	isFirstStart : BOOL := TRUE;
