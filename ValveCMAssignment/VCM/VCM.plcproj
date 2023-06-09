@@ -27,7 +27,13 @@
     <Compile Include="DUTs\DUT_ALM_Valve.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\DUT_ALM_Motor_Freq.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\DUT_Control_Base_Valve.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\DUT_CS_Motor_Freq.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\DUT_HMI_Valve.TcDUT">
@@ -36,13 +42,28 @@
     <Compile Include="DUTs\DUT_CS_Valve.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\DUT_IO_Valve_01.TcDUT">
+    <Compile Include="DUTs\DUT_HMI_Motor_Freq.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\DUT_IO_Motor.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\DUT_IO_Valve.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\DUT_State_Motor_Freq_Enum.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\DUT_STS_Valve.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\DUT_STS_Motor_Freq.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\DUT_Valve.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\DUT_Motor_Freq.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
@@ -73,11 +94,11 @@
     <Compile Include="Visualization Manager.TcVMO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="VISUs\Main_Visu.TcVIS">
+    <Compile Include="VISUs\VisuMain.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>
-    <Compile Include="VISUs\ValveHMI.TcVIS">
+    <Compile Include="VISUs\VisuValve.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>

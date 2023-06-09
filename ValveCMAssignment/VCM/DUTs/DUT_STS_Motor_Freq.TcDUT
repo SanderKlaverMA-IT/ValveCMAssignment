@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="DUT_STS_Motor_Freq" Id="{cf3e9f47-b756-4338-84b0-2a59837cbb70}">
+    <Declaration><![CDATA[TYPE DUT_STS_Motor_Freq :
+STRUCT	
+	InAuto : BOOL;// CM is in Auto Mode Boolean
+	InManual : BOOL;// CM is in Manual Mode Boolean
+	InSimulation : BOOL;// CM is in Simulation Mode Boolean
+	Interlocked : BOOL;// CM is interlocked Boolean
+	InAlarm : BOOL;// CM has an active alarm Boolean
+	ActualSpeed : REAL;// Actual Speed of Motor Real
+	State_INT : INT;// INT value of states (0=off, 10=Starting,20=On,30=Stopping) INT
+	State: DUT_State_Motor_Freq_Enum;
+	IO: DUT_IO_Motor;
+END_STRUCT	
+	
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

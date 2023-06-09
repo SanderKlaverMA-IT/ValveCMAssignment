@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="DUT_IO_Motor" Id="{bcab29c5-b057-4a7d-8b92-5d4128defdf4}">
+    <Declaration><![CDATA[TYPE DUT_IO_Motor :
+STRUCT
+	i_Thermal AT %I* : BOOL := FALSE;
+	i_Isolated AT %I* : BOOL := FALSE;
+	i_Running AT %I* : BOOL := FALSE;
+	i_ActSpeed  AT %I* : INT;
+	o_On  AT %I* : BOOL := FALSE;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

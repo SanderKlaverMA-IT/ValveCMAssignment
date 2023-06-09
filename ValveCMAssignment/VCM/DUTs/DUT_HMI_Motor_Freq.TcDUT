@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="DUT_HMI_Motor_Freq" Id="{b5181239-9c7c-493e-8870-473dddbbad05}">
+    <Declaration><![CDATA[TYPE DUT_HMI_Motor_Freq EXTENDS DUT_Control_Base_Valve :
+STRUCT
+	ModeValue : INT:= 1; // 0: Manual; 1: Auto;
+	DisableAutoManual : BOOL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

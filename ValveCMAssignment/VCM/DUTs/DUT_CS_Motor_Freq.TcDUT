@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="DUT_CS_Motor_Freq" Id="{4dad7a8e-baa2-475b-a7cd-25883465ef46}">
+    <Declaration><![CDATA[TYPE DUT_CS_Motor_Freq EXTENDS DUT_Control_Base_Valve :
+STRUCT
+	Auto : BOOL;// Set CM in Auto mode Boolean
+	Manual : BOOL;// Set CM in Manual mode Boolean
+	Simulation_On : BOOL;// Sets CM in Simulation mode Boolean
+	Simulation_Off : BOOL;// Sets CM in Simulation mode Boolean
+	Reset : BOOL;// Reset Alarms Boolean
+	On : BOOL;// Turn Motor On Manually Boolean
+	Off : BOOL;// Turn Motor Off Manually Boolean
+	Setpoint : REAL;// Setpoint Real
+	SimSpeed : REAL;// Set simulation speed Real
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

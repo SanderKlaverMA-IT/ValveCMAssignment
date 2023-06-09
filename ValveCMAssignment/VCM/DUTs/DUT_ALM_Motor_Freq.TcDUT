@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="DUT_ALM_Motor_Freq" Id="{5a330323-0874-434e-a0f7-b307129a7d9b}">
+    <Declaration><![CDATA[TYPE DUT_ALM_Motor_Freq :
+STRUCT
+	IsHealthy: BOOL := TRUE;
+	TimeFailure: BOOL := FALSE;
+	InAlarm: BOOL := TimeFailure OR NOT (IsHealthy);
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
