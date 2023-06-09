@@ -11,7 +11,7 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Set IN(IT)
-valve_01.MaxOpenCloseDuration := 15;// this setting can be reduced during test without the fysical Valve
+valve_01.MaxOpenCloseDuration := 15;// this setting can be reduced during test without the fysical Valve, will be replaced to PAR (DUT) when extending the program
 
 IF isFirstStart THEN
 	// Init the Valve at startup (for test/demo)
