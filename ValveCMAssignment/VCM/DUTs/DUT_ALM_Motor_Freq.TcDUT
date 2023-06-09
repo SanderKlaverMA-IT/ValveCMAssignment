@@ -3,9 +3,12 @@
   <DUT Name="DUT_ALM_Motor_Freq" Id="{5a330323-0874-434e-a0f7-b307129a7d9b}">
     <Declaration><![CDATA[TYPE DUT_ALM_Motor_Freq :
 STRUCT
-	IsHealthy: BOOL := TRUE;
-	TimeFailure: BOOL := FALSE;
-	InAlarm: BOOL := TimeFailure OR NOT (IsHealthy);
+	Thermal : BOOL;// Thermal Alarm i_Thermal == FALSE Boolean
+	Isolated : BOOL;//v Motor is Isolated i_Isolated == True Boolean
+	NotStarted : BOOL;// Motor failed to start STS.Starting AND AlarmStartTmr.Done Boolean
+	NotStopped : BOOL;// Motor failed TO stop STS.Stopping AND AlarmStartTmr.Done Boolean
+	SpeedWrong : BOOL;// act speed is different FROM actual speed Boolean
+	AlarmWord : WORD;// Word with Alarms for HMI Word
 END_STRUCT
 END_TYPE
 ]]></Declaration>

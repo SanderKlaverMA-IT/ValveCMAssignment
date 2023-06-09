@@ -30,7 +30,10 @@
     <Compile Include="DUTs\DUT_ALM_Motor_Freq.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\DUT_Control_Base_Valve.TcDUT">
+    <Compile Include="DUTs\DUT_Com_Base_Valve.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\DUT_Com_Base_Motor_Freq.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\DUT_CS_Motor_Freq.TcDUT">
@@ -51,7 +54,7 @@
     <Compile Include="DUTs\DUT_IO_Valve.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\DUT_State_Motor_Freq_Enum.TcDUT">
+    <Compile Include="DUTs\DUT_PAR_Motor_Freq.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\DUT_STS_Valve.TcDUT">
@@ -64,6 +67,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\DUT_Motor_Freq.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\Enum\DUT_State_Motor_Freq_Enum.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\Enum\DUT_State_Valve_Enum.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
@@ -102,12 +111,17 @@
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>
+    <Compile Include="VISUs\VisuMotorFreq.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
     <Compile Include="VISU_TASK.TcTTO">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
+    <Folder Include="DUTs\Enum" />
     <Folder Include="GVLs" />
     <Folder Include="POUs\Utilities" />
     <Folder Include="VISUs" />

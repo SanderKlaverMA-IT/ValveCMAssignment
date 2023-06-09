@@ -5,7 +5,6 @@
 VAR_GLOBAL
 	valve01: DUT_VALVE;
 	io_values: DUT_IO_Valve;
-	I_hasFailure : BOOL := FALSE;
 END_VAR
 
 VAR_GLOBAL CONSTANT
