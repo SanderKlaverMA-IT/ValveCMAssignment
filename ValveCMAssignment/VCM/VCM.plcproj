@@ -18,25 +18,25 @@
     <CompilerDefines>VISU_USEWSTRING</CompilerDefines>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DUTs\DUT_ALM.TcDUT">
+    <Compile Include="DUTs\DUT_ALM_Valve.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\DUT_Control_Base.TcDUT">
+    <Compile Include="DUTs\DUT_Control_Base_Valve.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\DUT_HMI.TcDUT">
+    <Compile Include="DUTs\DUT_HMI_Valve.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\DUT_CS.TcDUT">
+    <Compile Include="DUTs\DUT_CS_Valve.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\DUT_IO.TcDUT">
+    <Compile Include="DUTs\DUT_IO_Valve_01.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\DUT_STS.TcDUT">
+    <Compile Include="DUTs\DUT_STS_Valve.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\DUT_VALVE.TcDUT">
+    <Compile Include="DUTs\DUT_Valve.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
@@ -50,6 +50,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FB_Valve_monostable.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Valve_mono.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">

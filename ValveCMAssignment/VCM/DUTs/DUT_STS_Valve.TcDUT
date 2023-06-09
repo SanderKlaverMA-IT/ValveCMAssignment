@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <DUT Name="DUT_STS" Id="{0d7fb3f1-0e3b-441c-adba-aed480398811}">
-    <Declaration><![CDATA[TYPE DUT_STS :
+  <DUT Name="DUT_STS_Valve" Id="{0d7fb3f1-0e3b-441c-adba-aed480398811}">
+    <Declaration><![CDATA[TYPE DUT_STS_Valve :
 STRUCT
 	State : INT;
 	ManualMode: BOOL;
