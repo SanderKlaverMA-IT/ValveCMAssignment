@@ -10,7 +10,7 @@ VAR_OUTPUT
 END_VAR
 VAR_IN_OUT
 	Valve: DUT_VALVE;
-	I_O: DUT_IO;
+	I_O: DUT_IO_Valve_01;
 END_VAR
 VAR
 	openingTimer: Tc2_Standard.TON;
@@ -21,12 +21,15 @@ VAR
 	manualReset: BOOL;
 	reqOpen: BOOL;
 	reqClose: BOOL;
+	previousReqOpen: BOOL;
+	previousReqClose: BOOL;
 	isOpen: BOOL;
 	isClosed: BOOL;
 	startOpeningTimeOut: BOOL;
 	startClosingTimeOut: BOOL;
-	fbDutHmi: FB_DUT_HMI;
-	
+	ioFailure: BOOL;
+	ioStateFailure: BOOL;
+	csFailure: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -52,8 +55,8 @@ END_IF
 
 // Created Utitlities FB's for learning, can also use altenative (simplefied) code here  
 // tried to avoid redunant (HMI) logic.
-fbDutHmi(hmiValue_in:= Valve.Hmi);
-Valve.Hmi := fbDutHmi.hmiValue_out;
+fbHmiDut(hmiValue_in:= Valve.Hmi);
+Valve.Hmi := fbHmiDut.hmiValue_out;
 	 
 //Set HMI modus overide HMI by CS
 Valve.Hmi.DisableAutoManual := Valve.Cs.ManualOn OR Valve.Cs.AutoOn;
@@ -91,22 +94,25 @@ Valve.Sts.AutoMode:= NOT(Valve.Sts.ManualMode);
               
 // determine the actual or required state
 reqOpen S= (Valve.Sts.AutoMode AND Valve.Cs.Open) OR (Valve.Sts.ManualMode AND manualOpen);
-reqOpen R= isOpen;
+reqOpen R= isOpen OR Valve.Sts.Interlock OR previousReqOpen;
 reqClose S= Valve.Sts.Interlock OR (Valve.Sts.AutoMode AND Valve.Cs.Close) OR (Valve.Sts.ManualMode AND manualClose);
-reqClose R= isClosed;
+reqClose R= isClosed OR previousReqClose;
 isOpen S= I_O.I_isOpen OR (Valve.Sts.InSimulation AND reqOpen);
 isOpen R= NOT (I_O.I_isOpen);	 
 isClosed S= I_O.I_isClosed OR (Valve.Sts.InSimulation AND reqClose);
 isClosed R= NOT (I_O.I_isClosed);
-
+// arrange rising request signals for opening and closing
+previousReqOpen := reqOpen;
+previousReqClose := reqClose;
+	 
 // set state
 IF reqClose THEN
     Valve.Sts.State := GVL_VCM.STS_CLOSING;
 ELSIF reqOpen THEN
     Valve.Sts.State := GVL_VCM.STS_OPENING;
-ELSIF isOpen THEN
+ELSIF isOpen AND Valve.Sts.State = GVL_VCM.STS_OPENING THEN
     Valve.Sts.State := GVL_VCM.STS_OPEN;
-ELSIF isClosed THEN
+ELSIF isClosed AND Valve.Sts.State = GVL_VCM.STS_CLOSING THEN
     Valve.Sts.State := GVL_VCM.STS_CLOSED;
 
 
@@ -161,15 +167,19 @@ IF Valve.Cs.Reset OR manualReset THEN
 	//reset inAlarm only demand
     Valve.Alm.InAlarm := FALSE;
 END_IF
-// check if failure (still) exist.
+	 
+// check if failure(s) (still) exist.
+csFailure := (Valve.Cs.Open AND Valve.Cs.Close) OR (Valve.Cs.Manual and Valve.Cs.Auto);
+ioStateFailure := (Valve.Sts.Open AND NOT (I_O.I_isOpen)) OR (Valve.Sts.Closed AND NOT (I_O.I_isClosed));
+ioFailure := I_O.I_isClosed AND I_O.I_isOpen;	 
 Valve.Alm.TimeFailure := openingTimer.Q OR closingTimer.Q; // Set TimeFailure on opening or closing timeOut
-Valve.Alm.GeneralFailure := I_O.I_hasFailure; // Set GeneralFailure
-Valve.Alm.InAlarm := Valve.Alm.GeneralFailure OR Valve.Alm.TimeFailure OR Valve.Alm.InAlarm;
+Valve.Alm.IsHealthy := I_O.I_isHealthy; // Set GeneralFailure
+Valve.Alm.InAlarm := NOT (Valve.Alm.IsHealthy) OR Valve.Alm.TimeFailure OR ioFailure OR ioStateFailure OR Valve.Alm.InAlarm;
 {endregion}
 
 {region outputs}
 // set/reset output (O_setOpen)
-I_O.O_setOpen S= (Valve.Sts.Opening OR Valve.Sts.Open); //Warning: Valve is monostable, keep output also open on status: Valve.Sts.Open
+I_O.O_setOpen S= (Valve.Sts.Opening OR Valve.Sts.Open) AND NOT (Valve.Alm.InAlarm); //Warning: Valve is monostable, keep output also open on status: Valve.Sts.Open
 I_O.O_setOpen R= Valve.Sts.Closing OR Valve.Sts.Interlock OR Valve.Sts.InSimulation;
 
 {endregion}
@@ -194,52 +204,17 @@ END_IF]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_Valve_monostable">
-      <LineId Id="1490" Count="0" />
-      <LineId Id="1732" Count="0" />
-      <LineId Id="1492" Count="16" />
-      <LineId Id="1773" Count="2" />
-      <LineId Id="1784" Count="0" />
-      <LineId Id="1525" Count="0" />
-      <LineId Id="1783" Count="0" />
-      <LineId Id="1526" Count="19" />
-      <LineId Id="1733" Count="0" />
-      <LineId Id="1546" Count="13" />
-      <LineId Id="1694" Count="1" />
-      <LineId Id="1561" Count="1" />
-      <LineId Id="1696" Count="2" />
-      <LineId Id="1567" Count="2" />
-      <LineId Id="1702" Count="0" />
-      <LineId Id="1701" Count="0" />
-      <LineId Id="1692" Count="0" />
-      <LineId Id="1691" Count="0" />
-      <LineId Id="1704" Count="0" />
-      <LineId Id="1703" Count="0" />
-      <LineId Id="1699" Count="1" />
-      <LineId Id="1572" Count="0" />
-      <LineId Id="1578" Count="32" />
-      <LineId Id="1683" Count="0" />
-      <LineId Id="1686" Count="0" />
-      <LineId Id="1688" Count="0" />
-      <LineId Id="1661" Count="0" />
-      <LineId Id="1612" Count="2" />
-      <LineId Id="1659" Count="0" />
-      <LineId Id="1657" Count="1" />
-      <LineId Id="1656" Count="0" />
-      <LineId Id="1615" Count="1" />
-      <LineId Id="1623" Count="0" />
-      <LineId Id="1672" Count="0" />
-      <LineId Id="1678" Count="0" />
-      <LineId Id="1682" Count="0" />
-      <LineId Id="1679" Count="0" />
-      <LineId Id="1675" Count="0" />
-      <LineId Id="1669" Count="0" />
-      <LineId Id="1666" Count="0" />
-      <LineId Id="1634" Count="1" />
-      <LineId Id="1638" Count="2" />
-      <LineId Id="1642" Count="2" />
-      <LineId Id="1649" Count="5" />
-      <LineId Id="1681" Count="0" />
-      <LineId Id="1655" Count="0" />
+      <LineId Id="1843" Count="67" />
+      <LineId Id="1998" Count="0" />
+      <LineId Id="1911" Count="0" />
+      <LineId Id="1997" Count="0" />
+      <LineId Id="1999" Count="0" />
+      <LineId Id="1912" Count="61" />
+      <LineId Id="1994" Count="0" />
+      <LineId Id="1974" Count="0" />
+      <LineId Id="2001" Count="0" />
+      <LineId Id="1993" Count="0" />
+      <LineId Id="1975" Count="17" />
       <LineId Id="36" Count="0" />
     </LineIds>
     <LineIds Name="FB_Valve_monostable.METH_TryMe">

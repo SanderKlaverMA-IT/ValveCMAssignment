@@ -4,29 +4,22 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	isFirstStart : BOOL := TRUE;
-	valve_01 : FB_Valve_monostable;
-	valve_02 : FB_Valve_monostable;
+	// valve_01 : FB_Valve_monostable;
+	valve_01 : Valve_mono;
 	
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Set IN(IT)
-valve_01.MaxOpenCloseDuration := 180;// this setting can be reduced during test without the fysical Valve
-valve_02.MaxOpenCloseDuration := 10;
-GVL_VCM.valve01.TagName := 'Valve-01';
-GVL_VCM.valve02.TagName := 'Valve-02';
+valve_01.MaxOpenCloseDuration := 15;// this setting can be reduced during test without the fysical Valve, will be replaced to PAR (DUT) when extending the program
 
 IF isFirstStart THEN
 	// Init the Valve at startup (for test/demo)
-	GVL_VCM.ioValve01.I_isClosed := TRUE;
-	GVL_VCM.ioValve02.I_isClosed := TRUE;
+	GVL_VCM.io_values.I_isClosed := TRUE;
 END_IF
 
 // Do stuff
-//create valve-01
-valve_01(Valve:= GVL_VCM.valve01, I_O:= GVL_VCM.ioValve01);
-//create valve-02
-valve_02(Valve:= GVL_VCM.valve02, I_O:= GVL_VCM.ioValve02);
+valve_01(Valve:= GVL_VCM.valve01, I_O:= GVL_VCM.io_values);
 
 isFirstStart := FALSE;
 
@@ -35,24 +28,16 @@ isFirstStart := FALSE;
     <LineIds Name="MAIN">
       <LineId Id="7" Count="0" />
       <LineId Id="60" Count="0" />
-      <LineId Id="111" Count="0" />
-      <LineId Id="90" Count="0" />
       <LineId Id="76" Count="0" />
-      <LineId Id="91" Count="0" />
       <LineId Id="75" Count="0" />
       <LineId Id="87" Count="0" />
       <LineId Id="80" Count="0" />
-      <LineId Id="112" Count="0" />
       <LineId Id="78" Count="0" />
       <LineId Id="42" Count="1" />
-      <LineId Id="102" Count="0" />
       <LineId Id="37" Count="0" />
-      <LineId Id="103" Count="0" />
-      <LineId Id="93" Count="0" />
       <LineId Id="74" Count="0" />
-      <LineId Id="69" Count="0" />
-      <LineId Id="89" Count="0" />
-      <LineId Id="88" Count="0" />
+      <LineId Id="69" Count="1" />
+      <LineId Id="73" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

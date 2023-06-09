@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <DUT Name="DUT_VALVE" Id="{7768549f-516b-48d9-ba55-440da92000e0}">
-    <Declaration><![CDATA[TYPE DUT_VALVE :
+  <DUT Name="DUT_Valve" Id="{7768549f-516b-48d9-ba55-440da92000e0}">
+    <Declaration><![CDATA[TYPE DUT_Valve :
 STRUCT
-	Cs: DUT_CS;
-	Hmi: DUT_HMI;
-	Sts: DUT_STS;
-	Alm: DUT_ALM;
-	TagName: STRING := '###';
+	Cs: DUT_CS_Valve;
+	Hmi: DUT_HMI_Valve;
+	Sts: DUT_STS_Valve;
+	Alm: DUT_ALM_Valve;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

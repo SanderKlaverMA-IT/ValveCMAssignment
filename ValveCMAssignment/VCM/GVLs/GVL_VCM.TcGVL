@@ -4,9 +4,8 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	valve01: DUT_VALVE;
-	ioValve01: DUT_IO;
-	valve02: DUT_VALVE;
-	ioValve02: DUT_IO;
+	io_values: DUT_IO_Valve_01;
+	I_hasFailure : BOOL := FALSE;
 END_VAR
 
 VAR_GLOBAL CONSTANT
