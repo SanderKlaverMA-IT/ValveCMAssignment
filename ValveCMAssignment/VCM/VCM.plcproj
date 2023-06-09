@@ -17,7 +17,7 @@
     <LibraryReferences>{f3222f94-8aba-4608-be05-ab7a5fbb75a2}</LibraryReferences>
     <CompilerDefines>VISU_USEWSTRING</CompilerDefines>
     <Company>MyAutomation MA-IT</Company>
-    <Released>true</Released>
+    <Released>false</Released>
     <Title>Twincat 3 Tutorial</Title>
     <ProjectVersion>1.0.0</ProjectVersion>
     <Author>S. Klaver</Author>
