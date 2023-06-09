@@ -85,9 +85,6 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FB_Valve_monostable.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\Valve_mono.TcPOU">
       <SubType>Code</SubType>
     </Compile>

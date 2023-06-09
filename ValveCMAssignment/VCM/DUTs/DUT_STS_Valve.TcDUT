@@ -3,7 +3,7 @@
   <DUT Name="DUT_STS_Valve" Id="{0d7fb3f1-0e3b-441c-adba-aed480398811}">
     <Declaration><![CDATA[TYPE DUT_STS_Valve :
 STRUCT
-	State : INT;
+	State : DUT_State_Valve_Enum;
 	ManualMode: BOOL;
 	AutoMode: BOOL := TRUE;
 	InSimulation: BOOL;
@@ -13,8 +13,7 @@ STRUCT
 	Closing: BOOL;
 	Interlock: BOOL;
 	Alarm: BOOL;
-END_STRUCT	
-	
+END_STRUCT		
 END_TYPE
 ]]></Declaration>
   </DUT>

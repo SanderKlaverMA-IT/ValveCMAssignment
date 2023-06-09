@@ -2,11 +2,11 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <DUT Name="DUT_State_Valve_Enum" Id="{7f2f0ea5-e13d-4a84-b8a8-c2470ca279f1}">
     <Declaration><![CDATA[TYPE DUT_State_Valve_Enum : (
-	STS_UNDEFINED := 0,
-	STS_CLOSED := 10,
-	STS_OPENING := 20,
-	STS_OPEN := 30,
-	STS_CLOSING := 40
+	UNDEFINED := 0,
+	CLOSED := 10,
+	OPENING := 20,
+	OPEN := 30,
+	CLOSING := 40
 );
 END_TYPE
 ]]></Declaration>

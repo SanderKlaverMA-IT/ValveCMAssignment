@@ -4,7 +4,6 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	isFirstStart : BOOL := TRUE;
-	// valve_01 : FB_Valve_monostable;
 	valve_01 : Valve_mono;
 	
 END_VAR

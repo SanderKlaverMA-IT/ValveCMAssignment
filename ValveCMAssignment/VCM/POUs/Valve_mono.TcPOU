@@ -87,8 +87,7 @@ Valve.Sts.AutoMode:= NOT(Valve.Sts.ManualMode);
 
 // Get Interlock and simulation from CS and HMI
 Valve.Sts.InSimulation := Valve.Cs.Simulation OR Valve.Hmi.Simulation; 
-Valve.Sts.Interlock := Valve.Cs.Interlock;	 
-		  
+Valve.Sts.Interlock := Valve.Cs.Interlock;	 		  
 {endregion interlock manual auto}
 	 
 	 
@@ -102,37 +101,37 @@ t_reqOpen := NOT (t_reqClose OR t_isOpen OR Valve.Sts.Interlock) AND ((Valve.Sts
 
 {region control coördination} 
 // INIT STS.State zet to CLOSING if UNDEFINED
-IF Valve.Sts.State = GVL_VCM.STS_UNDEFINED THEN
-	Valve.Sts.State := GVL_VCM.STS_CLOSING;		 
+IF Valve.Sts.State = DUT_State_Valve_Enum.UNDEFINED THEN
+	Valve.Sts.State := DUT_State_Valve_Enum.CLOSING;		 
 END_IF
 // set state
 CASE Valve.Sts.State OF
-    GVL_VCM.STS_CLOSED: 
+    CLOSED: 
 	    IF t_reqOpen THEN
-    		Valve.Sts.State := GVL_VCM.STS_OPENING;
+    		Valve.Sts.State := DUT_State_Valve_Enum.OPENING;
 		END_IF       
-    GVL_VCM.STS_OPENING: 
+    OPENING: 
        	IF t_reqClose THEN
-   			Valve.Sts.State := GVL_VCM.STS_CLOSING;
+   			Valve.Sts.State := DUT_State_Valve_Enum.CLOSING;
 		ELSIF t_isOpen THEN
-			Valve.Sts.State := GVL_VCM.STS_OPEN;
+			Valve.Sts.State := DUT_State_Valve_Enum.OPEN;
 		END_IF  	  
-    GVL_VCM.STS_OPEN: 
+    OPEN: 
         IF t_reqClose THEN
-    		Valve.Sts.State := GVL_VCM.STS_Closing;
+    		Valve.Sts.State := DUT_State_Valve_Enum.Closing;
 		END_IF       
-    GVL_VCM.STS_CLOSING:
+    CLOSING:
         	IF t_reqOpen THEN
-   			Valve.Sts.State := GVL_VCM.STS_OPENING;
+   			Valve.Sts.State := DUT_State_Valve_Enum.OPENING;
 		ELSIF t_isClosed THEN
-			Valve.Sts.State := GVL_VCM.STS_CLOSED;
+			Valve.Sts.State := DUT_State_Valve_Enum.CLOSED;
 		END_IF  	  
 END_CASE
 
-Valve.Sts.Closed := Valve.Sts.State = GVL_VCM.STS_CLOSED;
-Valve.Sts.Opening := Valve.Sts.State = GVL_VCM.STS_OPENING;
-Valve.Sts.Open := Valve.Sts.State = GVL_VCM.STS_OPEN;
-Valve.Sts.Closing := Valve.Sts.State = GVL_VCM.STS_CLOSING;
+Valve.Sts.Closed := Valve.Sts.State = DUT_State_Valve_Enum.CLOSED;
+Valve.Sts.Opening := Valve.Sts.State = DUT_State_Valve_Enum.OPENING;
+Valve.Sts.Open := Valve.Sts.State = DUT_State_Valve_Enum.OPEN;
+Valve.Sts.Closing := Valve.Sts.State = DUT_State_Valve_Enum.CLOSING;
 {endregion}
 
 {region set timer guard for opening and closing}
@@ -183,7 +182,8 @@ t_manualReset R= TRUE;
 ]]></ST>
     </Implementation>
     <LineIds Name="Valve_mono">
-      <LineId Id="3927" Count="122" />
+      <LineId Id="3927" Count="54" />
+      <LineId Id="3983" Count="66" />
       <LineId Id="4051" Count="4" />
       <LineId Id="4057" Count="18" />
       <LineId Id="36" Count="0" />
