@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="DUT_IO_MotorFreq1" Id="{26e953ed-4e84-447c-a9c9-b1003626f763}">
+    <Declaration><![CDATA[TYPE DUT_IO_MotorFreq1 :
+STRUCT
+	i_Thermal : BOOL := FALSE; // Thermal Alarm (NC)
+	i_Isolated : BOOL := FALSE; // Isolated (NC) Boolean Input
+	i_Running : BOOL := FALSE; // feedback motor is on Boolean Input
+	i_ActSpeed : INT := 0; //actual Speed INT Input
+	o_On : BOOL := FALSE; // Turn otor On Boolean Output
+	o_Setpoint : INT := 0; // Setpoint for Motor
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

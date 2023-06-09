@@ -10,7 +10,7 @@ VAR_OUTPUT
 END_VAR
 VAR_IN_OUT
 	Valve: DUT_VALVE;
-	I_O: DUT_IO;
+	I_O: DUT_IO_Valve_01;
 END_VAR
 VAR
 	openingTimer: Tc2_Standard.TON;

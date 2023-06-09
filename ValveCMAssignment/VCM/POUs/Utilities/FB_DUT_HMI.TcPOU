@@ -5,10 +5,10 @@
 VAR_INPUT
 END_VAR
 VAR_INPUT
-    hmiValue_in: DUT_HMI;
+    hmiValue_in: DUT_HMI_Valve;
 END_VAR
 VAR_OUTPUT
-    hmiValue_out: DUT_HMI;
+    hmiValue_out: DUT_HMI_Valve;
 END_VAR
 VAR
     intToBool: FB_Integer_To_BooleanArray;
