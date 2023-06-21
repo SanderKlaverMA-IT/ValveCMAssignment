@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.44">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.47">
 	<ImageDatas>
 		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
 		<ImageData Id="1001">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ff000000000000ff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ff000000ff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ff000000ff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ff000000000000ff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
@@ -11,8 +11,8 @@
 			<Settings MaxCpus="2" NonWinCpus="1"/>
 			<Licenses>
 				<Target>
-					<ManualSelect>{777F1598-583B-4503-99BB-7C02E0ABD97E}</ManualSelect>
 					<ManualSelect>{56ADDFFF-32FF-4DC7-A432-0D2D8413616A}</ManualSelect>
+					<ManualSelect>{777F1598-583B-4503-99BB-7C02E0ABD97E}</ManualSelect>
 					<ManualSelect>{A1AF8A04-C08D-4853-A5A0-0E6C3A278A8C}</ManualSelect>
 				</Target>
 			</Licenses>
@@ -27,28 +27,28 @@
 		</System>
 		<Plc>
 			<Project GUID="{0727CBA7-EBFC-4006-A00E-6414C5E9C816}" Name="VCM" PrjFilePath="VCM\VCM.plcproj" TmcFilePath="VCM\VCM.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="VCM\VCM.tmc" TmcHash="{40A646BA-4080-68A6-1837-DD62BC1D5D57}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="VCM\VCM.tmc" TmcHash="{007E4671-509F-EB64-F466-931F8E6BBC88}">
 					<Name>VCM Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>GVL_VCM.io_values.I_isOpen</Name>
+							<Name>MAIN.io_coupling.I_isOpen</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_VCM.io_values.I_isClosed</Name>
+							<Name>MAIN.io_coupling.I_isClosed</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_VCM.io_values.I_isHealthy</Name>
+							<Name>MAIN.io_coupling.I_isHealthy</Name>
 							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
 						<Var>
-							<Name>GVL_VCM.io_values.O_setOpen</Name>
+							<Name>MAIN.io_coupling.O_setOpen</Name>
 							<Type>BOOL</Type>
 						</Var>
 					</Vars>
@@ -59,9 +59,23 @@
 							</OwnerB>
 						</OwnerA>
 					</UnrestoredVarLinks>
+					<UnrestoredVarLinks ImportTime="2023-06-21T11:50:28">
+						<OwnerA Name="InputDst" Prefix="TIPC^VCM^VCM Instance" Type="1">
+							<OwnerB Name="TIID^Device 3 (EtherCAT)^Term 1 (EK1100)^Term 3 (EL1004)">
+								<Link VarA="GVL_VCM.io_valve_01.I_isClosed" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 2^Input" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_VCM.io_valve_01.I_isHealthy" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 3^Input" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_VCM.io_valve_01.I_isOpen" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 1^Input" Size="1" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+						<OwnerA Name="OutputSrc" Prefix="TIPC^VCM^VCM Instance" Type="2">
+							<OwnerB Name="TIID^Device 3 (EtherCAT)^Term 1 (EK1100)^Term 4 (EL2014)">
+								<Link VarA="GVL_VCM.io_valve_01.O_setOpen" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 1^Output" Size="1" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
 					<Contexts>
 						<Context>
-							<Id NeedCalleeCall="true">0</Id>
+							<Id>0</Id>
 							<Name>PlcTask</Name>
 							<ManualConfig>
 								<OTCID>#x02010030</OTCID>
@@ -70,7 +84,7 @@
 							<CycleTime>10000000</CycleTime>
 						</Context>
 						<Context>
-							<Id NeedCalleeCall="true">1</Id>
+							<Id>1</Id>
 							<Name>VISU_TASK</Name>
 							<ManualConfig>
 								<OTCID>#x02010040</OTCID>
@@ -245,19 +259,21 @@
 				</Box>
 				<EtherCAT/>
 			</Device>
+			<Device Id="1" DevType="112" AmsPort="28673" AmsNetId="192.168.8.3.2.1" RemoteName="Device 1 (EtherCAT Automation Protocol)">
+				<Name>Device 1 (EtherCAT Automation Protocol)</Name>
+				<AddressInfo>
+					<Pnp>
+						<DeviceDesc>Ethernet (TwinCAT-Intel PCI Ethernet Adapter (Gigab</DeviceDesc>
+						<DeviceName>\DEVICE\{9848F056-A4AE-42A4-900A-54B0F2DFF2A3}</DeviceName>
+						<DeviceData>0001056126bb</DeviceData>
+					</Pnp>
+				</AddressInfo>
+				<Image Id="1" AddrType="1" ImageType="3">
+					<Name>Image</Name>
+				</Image>
+				<Ethernet DeviceDesc="Ethernet (TwinCAT-Intel PCI Ethernet Adapter (Gigab"/>
+				<Eap Recovery="true" EapDeviceGuid="{E87915AC-BECF-43B1-9BDB-68D3D43EC10B}"/>
+			</Device>
 		</Io>
 	</Project>
-	<Mappings>
-		<MappingInfo Identifier="{00000000-2001-0850-0020-500820000403}" Id="#x02030010"/>
-		<OwnerA Name="TIPC^VCM^VCM Instance">
-			<OwnerB Name="TIID^Device 3 (EtherCAT)^Term 1 (EK1100)^Term 3 (EL1004)">
-				<Link VarA="PlcTask Inputs^GVL_VCM.io_values.I_isClosed" VarB="Channel 2^Input"/>
-				<Link VarA="PlcTask Inputs^GVL_VCM.io_values.I_isHealthy" VarB="Channel 3^Input"/>
-				<Link VarA="PlcTask Inputs^GVL_VCM.io_values.I_isOpen" VarB="Channel 1^Input"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 3 (EtherCAT)^Term 1 (EK1100)^Term 4 (EL2014)">
-				<Link VarA="PlcTask Outputs^GVL_VCM.io_values.O_setOpen" VarB="DIG Outputs^Channel 1^Output"/>
-			</OwnerB>
-		</OwnerA>
-	</Mappings>
 </TcSmProject>

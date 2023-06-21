@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="IO_CouplingAsFunction" Id="{51cf6aa0-f974-4546-be43-88ca6f6efa73}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION IO_CouplingAsFunction : BOOL
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// will be used for IO coupling test]]></ST>
+    </Implementation>
+    <LineIds Name="IO_CouplingAsFunction">
+      <LineId Id="41" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

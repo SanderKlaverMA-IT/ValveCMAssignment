@@ -196,7 +196,7 @@
                             </o>
                             <o>
                               <v n="Id">743958181L</v>
-                              <v n="Value">"GVL_VCM.io_values.I_isOpen"</v>
+                              <v n="Value">"GVL_VCM.io_valve_01_gvl.I_isOpen"</v>
                             </o>
                           </l>
                         </o>
@@ -654,7 +654,7 @@
                             </o>
                             <o>
                               <v n="Id">743958181L</v>
-                              <v n="Value">"GVL_VCM.io_values.I_isClosed"</v>
+                              <v n="Value">"GVL_VCM.io_valve_01_gvl.I_isClosed"</v>
                             </o>
                           </l>
                         </o>
@@ -4056,7 +4056,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"GVL_VCM.io_values.I_isOpen"</v>
+                          <v n="Value">"GVL_VCM.io_valve_01_gvl.I_isOpen"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -4213,7 +4213,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"GVL_VCM.io_values.I_isClosed"</v>
+                          <v n="Value">"GVL_VCM.io_valve_01_gvl.I_isClosed"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -4370,7 +4370,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"GVL_VCM.io_values.I_isHealthy"</v>
+                          <v n="Value">"GVL_VCM.io_valve_01_gvl.I_isHealthy"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -5574,7 +5574,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"GVL_VCM.io_values.O_setOpen"</v>
+                          <v n="Value">"GVL_VCM.io_valve_01_gvl.O_setOpen"</v>
                         </o>
                       </l>
                     </o>

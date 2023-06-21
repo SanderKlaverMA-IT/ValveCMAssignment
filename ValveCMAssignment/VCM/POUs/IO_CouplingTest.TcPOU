@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="IO_CouplingTest" Id="{b417793d-c94b-4838-acaf-a62eb62a38e8}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK IO_CouplingTest
+VAR_INPUT
+	I_isOpen AT %I* : BOOL := FALSE;
+	I_isClosed AT %I*   : BOOL := FALSE;
+	I_isHealthy AT %I* : BOOL := FALSE;
+END_VAR
+VAR_OUTPUT
+	O_setOpen AT %Q*   : BOOL := FALSE;
+END_VAR
+
+VAR_IN_OUT
+//IO_Valve01: DUT_IO_Valve;
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+// Get/Set Valve_01 IO 
+
+GVL_VCM.io_valve_01_gvl.I_isOpen := I_isOpen;
+GVL_VCM.io_valve_01_gvl.I_isClosed := I_isClosed;
+GVL_VCM.io_valve_01_gvl.I_isHealthy := I_isHealthy;
+
+O_setOpen := GVL_VCM.io_valve_01_gvl.O_setOpen;
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="IO_CouplingTest">
+      <LineId Id="25" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="32" Count="1" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="26" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

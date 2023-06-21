@@ -6,8 +6,9 @@ VAR
 	isFirstStart : BOOL := TRUE;
 	// valve_01 : FB_Valve_monostable;
 	valve_01 : Valve_mono;
-	
+	io_coupling : IO_CouplingTest;
 END_VAR
+
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Set IN(IT)
@@ -15,11 +16,14 @@ valve_01.MaxOpenCloseDuration := 15;// this setting can be reduced during test w
 
 IF isFirstStart THEN
 	// Init the Valve at startup (for test/demo)
-	GVL_VCM.io_values.I_isClosed := TRUE;
+	GVL_VCM.io_valve_01_gvl.I_isClosed := TRUE;
 END_IF
 
+io_coupling := io_coupling;
+GVL_VCM.io_valve_01_gvl.I_isClosed := io_coupling.I_isClosed;
+
 // Do stuff
-valve_01(Valve:= GVL_VCM.valve01, I_O:= GVL_VCM.io_values);
+valve_01(Valve:= GVL_VCM.valve01, I_O:= GVL_VCM.io_valve_01_gvl);
 
 isFirstStart := FALSE;
 
@@ -33,6 +37,8 @@ isFirstStart := FALSE;
       <LineId Id="87" Count="0" />
       <LineId Id="80" Count="0" />
       <LineId Id="78" Count="0" />
+      <LineId Id="95" Count="1" />
+      <LineId Id="102" Count="0" />
       <LineId Id="42" Count="1" />
       <LineId Id="37" Count="0" />
       <LineId Id="74" Count="0" />

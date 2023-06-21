@@ -30,7 +30,7 @@
     <Compile Include="DUTs\DUT_CS_Valve.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\DUT_IO_Valve_01.TcDUT">
+    <Compile Include="DUTs\DUT_IO_Valve.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\DUT_STS_Valve.TcDUT">
@@ -50,6 +50,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FB_Valve_monostable.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\IO_CouplingTest.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\IO_CouplingAsFunction.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Valve_mono.TcPOU">
